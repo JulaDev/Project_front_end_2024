@@ -1,0 +1,271 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+/* Bootstrap overrides */
+.navbar-brand{
+    color: #6BCB77;
+}
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem; /* Adjust the size as needed */
+}
+
+/* Search bar styles */
+.navbar.bg-body-tertiary .container-fluid {
+    padding: 0.5rem;
+}
+
+.navbar .form-control {
+    max-width: 500px; /* Adjust the width as needed */
+}
+
+/* Carousel styles */
+
+/* Category and Promotion section styles */
+
+/* Base styles */
+.text-black {
+    color: #333; /* Black color */
+}
+
+.text-green {
+    color: #6BCB77; /* Green color */
+}
+
+/* Existing styles for "Our Category" heading with underline effect */
+
+.category-section {
+    max-width: none;
+}
+
+.category-section h2 {
+    font-size: 1.5em; /* Adjust the size as needed */
+    margin-bottom: 20px; /* Adjust the space below the header */
+    position: relative; /* Required for positioning the pseudo-element */
+    display: inline-block; /* Adjust if you want the underline to match text width */
+}
+
+.category-section h2::after {
+    content: ''; /* This is necessary for the pseudo-element to work */
+    display: block; /* Makes it possible to set a width and height */
+    width: 1300px; /* Length of the underline */
+    height: 2.5px; /* Thickness of the underline */
+    background-color: #DBDBDB; /* Color of the underline */
+    position: absolute; /* Positions the pseudo-element in relation to its parent */
+    bottom: -20px; /* Adjust the position under the text */
+    left: 0%; /* Center the underline relative to the text */
+}
+
+/* Styles for category images */
+.category-image {
+    width: 100%; /* ensures image is responsive */
+    height: auto; /* maintain aspect ratio */
+    border-radius: 5px; /* optional: if you want rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* optional: if you want shadow for depth */
+}
+
+/* Adjustments for the .col to display items horizontally */
+@media only screen and (min-width: 992px) {
+    .category-section .row .col {
+        flex: 0 0 auto; /* prevents the column from growing */
+        width: 33.333%; /* for 3 items per row */
+        padding-right: 15px; /* adjust space between items */
+        padding-left: 15px; /* adjust space between items */
+    }
+}
+
+/* Existing styles for "Best Price Promotion" heading with underline effect */
+
+.promotion-section {
+    max-width: none;
+}
+
+.promotion-section h2 {
+    font-size: 1.5em; /* Adjust the size as needed */
+    margin-bottom: 20px; /* Adjust the space below the header */
+    position: relative; /* Required for positioning the pseudo-element */
+    display: inline-block; /* Adjust if you want the underline to match text width */
+}
+
+.promotion-section h2::after {
+    content: ''; /* This is necessary for the pseudo-element to work */
+    display: block; /* Makes it possible to set a width and height */
+    width: 1300px; /* Length of the underline */
+    height: 2.5px; /* Thickness of the underline */
+    background-color: #DBDBDB; /* Color of the underline */
+    position: absolute; /* Positions the pseudo-element in relation to its parent */
+    bottom: -20px; /* Adjust the position under the text */
+    left: 0%; /* Center the underline relative to the text */
+}
+
+.card-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.card {
+    flex: 0 0 auto; /* Prevent cards from shrinking and enable scrolling */
+    width: 18rem; /* Set a fixed width for each card */
+    margin-right: 30px; /* Add some space between the cards */
+}
+
+.card:hover {
+    transform: scale(1.05); /* เพิ่มขนาดเล็กน้อยเมื่อ hover */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .btn {
+    margin-top: auto; /* Pushes the button to the bottom */
+    width: auto; /* Adjust width as necessary */
+    align-self: center; /* Center align the button */
+}
+
+.card-text {
+    margin-bottom: auto; /* Ensures space is distributed above */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 300px; /* ตั้งค่าความสูงของรูปภาพ */
+    object-fit: cover; /* ให้รูปภาพครอบคลุมพื้นที่โดยไม่เสียสัดส่วน */
+}
+
+.card-title {
+    color: #007bff; /* ให้สีหัวข้อตรงกับปุ่มหรือ theme ของคุณ */
+}
+
+.card-text {
+    margin-top: 10px;
+}
+
+.badge {
+    font-size: 1.2em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.contact-section {
+    max-width: none;
+}
+
+.contact-section h2 {
+    font-size: 1.5em; /* Adjust the size as needed */
+    margin-bottom: 20px; /* Adjust the space below the header */
+    position: relative; /* Required for positioning the pseudo-element */
+    display: inline-block; /* Adjust if you want the underline to match text width */
+}
+
+.contact-section h2::after {
+    content: ''; /* This is necessary for the pseudo-element to work */
+    display: block; /* Makes it possible to set a width and height */
+    width: 1300px; /* Length of the underline */
+    height: 2.5px; /* Thickness of the underline */
+    background-color: #DBDBDB; /* Color of the underline */
+    position: absolute; /* Positions the pseudo-element in relation to its parent */
+    bottom: -20px; /* Adjust the position under the text */
+    left: 0%; /* Center the underline relative to the text */
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.list-group-item i {
+    font-size: 1.5rem;
+    color: #4CAF50; /* Use a color that matches the text-green class */
+    margin-right: 0.5rem;
+}
+
+.list-group-item span {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Add a hover effect to list items */
+.list-group-item-action:hover {
+    transform: scale(1.02);
+    transition: transform 0.1s ease-in-out;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/*ยังไม่ได้ใส่*/
+.map iframe {
+    border: none; /* Removes default border around iframe */
+    max-width: 100%;
+    height: 250px; /* Adjust height as needed */
+}
+
+/* Style the list to have no default list styling */
+.links {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.5em; /* Set font size */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style each link item */
+.link-item {
+    color: black; /* Set the default link color */
+    text-decoration: none; /* Removes the underline from links */
+}
+
+/* Style each sub-link item */
+.sub-link-item {
+    color: black; /* Set the sub-links color to black */
+    text-decoration: none; /* Removes the underline from links */
+}
+
+/* Style the category to behave as a dropdown */
+.category {
+    position: relative; /* Position the dropdown content relative to this */
+}
+
+/* Style the dropdown content */
+.sub-links {
+    display: none; /* Hide the dropdown content by default */
+    position: absolute; /* Position the dropdown content absolutely within the .category */
+    background-color: white; /* Background color for the dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow to pop it up */
+    padding: 12px 16px;
+    z-index: 1; /* Make sure it stacks on top */
+}
+
+/* Show the dropdown content when hovering over the category */
+.category:hover .sub-links {
+    display: block; /* Display the dropdown content */
+}
+
+footer {
+    padding: 20px 0;
+    font-size: 1.5em;
+    background-color: #f1f1f1;
+    color: #777;
+    text-align: center; /* Center the text horizontally */
+}
+
+
