@@ -17,7 +17,8 @@ user TABLE
     create table user(
     id varchar(30) primary key,
     password varchar(20) not null,
-    name varchar(30) not null
+    name varchar(30) not null,
+    seller boolean not null
     );
 
 category TABLE
