@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Snack Items</title>
+    <title>List of <%= listTitle %> Items</title>
 </head>
 <body>
-    <h1>List of Snack Items</h1>
+    <h1>List of <%= listTitle %> Items</h1>
     <ul>
         <% items.forEach(function(item) { %>
             <li><%= item.name %></li>
