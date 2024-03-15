@@ -1,8 +1,13 @@
+//app.js
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const listItem = require("./model/listItem")
+const db = require("./config/db.js");
 
 const app = express();
+app.set("view engine", "ejs");
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,6 +45,18 @@ app.post('/register', function(req, res) {
 app.get('/homepage', function(req, res) {
     // Replace 'homepage.html' with the actual file you want to serve
     res.sendFile(path.join(__dirname, 'public', 'html', 'homepage.html'));
+});
+
+app.get('/list', async function(req, res) {
+    // Populate the tables with data if they are empty
+    const snackItems = new ProductItemsModel("snack_items");
+    await snackItems.defineProductItems();
+
+    // Fetch the list of snack names from the database
+    const snackNames = await snackItems.getProductItemsName();
+
+    // Render the 'list.ejs' template and pass the snack names as data
+    res.render('list', { items: snackNames });
 });
 
 // Start the server on port 3000
