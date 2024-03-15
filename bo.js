@@ -4,7 +4,7 @@ const db = require("./db");
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extend:false}));
+app.use(bodyParser.urlencoded({extend:true}));
 app.use(express.static('public'));
 app.use(express.static("views"));
 
@@ -124,10 +124,36 @@ app.post('/removeItem', (req, res)=>{
 })
 
 app.post('/addCategory', (req, res)=>{
-    res.redirect('/market')
+
+    let category = req.body.categoryName;
+
+    let sql = `INSERT INTO categories(name) VALUES('${category}');`
+
+    db.query((`SELECT * FROM item_list`), (err, row)=>{
+        if(err) throw err;
+
+        db.query(sql,(err, categories)=>{
+            if(err) throw err;
+
+            console.log(`Added Category: ${category}`);
+
+            for(let i = 0; i < categories.length; i++){
+                console.log(`This is ${i+1} Item in Category Table: ${categories[i].name}`)
+            }
+
+        })
+
+        db.query(`SELECT * FROM categories`, (err, row)=>{
+            if(err) throw err;
+
+            res.render('market',{ data: row , categoryList: row });
+        })
+
+    })
 })
 
 app.post('/arrange', (req,res)=>{
+
 
     db.query((`SELECT * FROM item_list`), (err, row)=>{
         if(err) throw err;
