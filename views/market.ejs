@@ -37,6 +37,7 @@
                 </div>
 
                 <div style="height: 67vh;  overflow: scroll; margin-top: 40px">
+
                     <% for(let i = 0 ; i < categoryList.length ; i ++){ %>
 
 
@@ -47,10 +48,8 @@
                         </form>
 
 
-
-
-
                     <% } %>
+
                 </div>
 
             </div>
@@ -65,7 +64,7 @@
                         <p class=" col-lg-10 col-md-9 col-sm-8 col-8" style="font-size: 2rem; font-weight: bold">ITEMS</p>
 
                         <form action="/addCategory" method="get">
-                            <button type="submit" class=" col-lg-1 col-md-4 col-sm-4 col-2" style="height: 40px; width: 120px; margin-top: 12px; background-color: #1a8c3b; color: white; border: none; font-weight: lighter;">ADD CATEGORY</button>
+                            <button type="submit" class=" col-lg-1 col-md-4 col-sm-4 col-2" style="height: 40px; width: 120px; margin-top: 12px; background-color: #1a8c3b; color: white; border: none; font-weight: lighter;">ADD ITEM</button>
                         </form>
                     </div>
 
@@ -89,7 +88,7 @@
 
                             <div class=" col-lg-1 col-md-1 col-sm-1 col-1">
                             <form action="/removeItem" method="post">
-                                <button type="submit" class="list-box-Xbtn-lg list-box-Xbtn-md list-box-Xbtn-sm">X</button>
+                                <button type="submit" class="list-box-Xbtn-lg list-box-Xbtn-md list-box-Xbtn-sm" name="removeItem" value="<%= data[i].id%>">X</button>
                             </form>
                             </div>
 

@@ -107,6 +107,18 @@ app.post('/market', (req, res)=>{
 
 })
 
+app.post('/category', (req, res)=>{
+
+
+        db.query(`SELECT * FROM categories`,(err, category)=>{
+            if(err) throw err;
+
+            res.render('category',{ categoryList: category });
+        })
+
+
+})
+
 app.post("/getMarket",(req, res)=>{
     res.redirect('/market')
 })
@@ -120,7 +132,28 @@ app.post('/editItem', (req, res)=>{
 })
 
 app.post('/removeItem', (req, res)=>{
-    res.redirect('/market')
+
+    let rm = req.body.removeItem;
+
+    db.query(`DELETE FROM item_list WHERE id = ${rm};`,(err, category)=>{
+        if(err) throw err;
+
+        console.log(`Selected Item ID: ${rm} REMOVED`)
+
+    })
+
+    db.query((`SELECT * FROM item_list`), (err, row)=>{
+        if(err) throw err;
+
+        db.query(`SELECT * FROM categories`,(err, categories)=>{
+            if(err) throw err;
+
+            res.render('market',{ data: row , categoryList: categories });
+        })
+
+    })
+
+    console.log(`Selected ITEM: ${rm}`)
 })
 
 app.post('/addCategory', (req, res)=>{
@@ -129,8 +162,6 @@ app.post('/addCategory', (req, res)=>{
 
     let sql = `INSERT INTO categories(name) VALUES('${category}');`
 
-    db.query((`SELECT * FROM item_list`), (err, row)=>{
-        if(err) throw err;
 
         db.query(sql,(err, categories)=>{
             if(err) throw err;
@@ -146,10 +177,32 @@ app.post('/addCategory', (req, res)=>{
         db.query(`SELECT * FROM categories`, (err, row)=>{
             if(err) throw err;
 
-            res.render('market',{ data: row , categoryList: row });
+            res.render('category',{ categoryList: row });
         })
 
+
+})
+
+app.post('/removeCategory', (req, res)=>{
+
+    let rm = req.body.removeCategory;
+
+
+    db.query(`DELETE FROM categories WHERE id = ${rm};`,(err, category)=>{
+        if(err) throw err;
+
+        console.log(`Selected Category ID: ${rm} REMOVED`)
+
     })
+
+    db.query(`SELECT * FROM categories`, (err, cat)=>{
+        if(err) throw err;
+
+        res.render('category',{ categoryList: cat });
+    })
+
+
+
 })
 
 app.post('/arrange', (req,res)=>{
