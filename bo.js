@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require("./db");
-const session = require('express-session')
-const axios = require("axios");
 
 const app = express();
 
