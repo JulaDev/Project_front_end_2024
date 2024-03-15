@@ -37,7 +37,16 @@ app.get('/seller',(req, res)=>{
 })
 
 app.get('/addItem',(req,res)=>{
-    res.render('./addItem.ejs');
+
+    let sql = `SELECT * FROM categories`
+
+    db.query(sql, (err, row)=>{
+        if(err) throw err;
+
+        res.render('./addItem.ejs', {category: row});
+    })
+
+
 })
 
 app.get('/addCategory',(req,res)=>{

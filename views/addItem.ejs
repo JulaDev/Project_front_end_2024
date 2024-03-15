@@ -50,9 +50,9 @@
 
                         <label style="width: 100%">
                             CATEGORY:  <select name="itemCategory" required>
-                                <option value="milk"> MILK </option>
-                                <option value="desert"> DESERT </option>
-                                <option value="flavor"> FLAVOR </option>
+                                <% for(let i = 0 ; i < category.length; i++){%>
+                                    <option value="<%= category[i].name %>"> <%= category[i].name %> </option>
+                                <%}%>
                             </select>
                         </label>
 
