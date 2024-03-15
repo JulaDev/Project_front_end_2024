@@ -235,7 +235,22 @@ app.post('/arrange', (req,res)=>{
 })
 
 
+function cancelEntry(){
+    app.post('/market', (req, res)=>{
 
+        db.query((`SELECT * FROM item_list`), (err, row)=>{
+            if(err) throw err;
+
+            db.query(`SELECT * FROM categories`,(err, categories)=>{
+                if(err) throw err;
+
+                res.render('market',{ data: row , categoryList: categories });
+            })
+
+        })
+
+    })
+}
 
 
 app.listen(port, ()=>{

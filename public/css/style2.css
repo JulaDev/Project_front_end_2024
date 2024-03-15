@@ -1,0 +1,187 @@
+
+
+@media  screen and (max-width: 3000px){
+    .outBox{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .topText{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .inputBox1{
+        padding-top: 20px;
+        margin-top: 20px;
+        position: relative;
+        left: 4vw;
+        font-weight: bold;
+
+    }
+
+    .inputBox2{
+        width: 50vw
+
+    }
+
+    .pst1{
+        position: relative;
+        left: 52vw
+    }
+
+    .pst2{
+        position: relative;
+        left: 76%;
+        bottom: 42px
+    }
+}
+
+@media  screen and (max-width: 2000px){
+    .outBox{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .topText{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .inputBox1{
+        padding-top: 20px;
+        margin-top: 20px;
+        position: relative;
+        left: 4vw;
+        font-weight: bold;
+
+    }
+
+    .inputBox2{
+        width: 50vw
+
+    }
+
+    .pst1{
+        position: relative;
+        left: 52vw
+    }
+
+    .pst2{
+        position: relative;
+        left: 73%;
+        bottom: 42px
+    }
+}
+
+@media  screen and (max-width: 1500px){
+    .outBox{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .topText{
+        margin-left: 18vw;
+        width: 60vw;
+    }
+
+    .inputBox1{
+        padding-top: 20px;
+        margin-top: 20px;
+        position: relative;
+        left: 4vw;
+        font-weight: bold;
+
+    }
+
+    .inputBox2{
+        width: 50vw
+
+    }
+
+    .pst1{
+        position: relative;
+        left: 52vw
+    }
+
+    .pst2{
+        position: relative;
+        left: 63%;
+        bottom: 42px
+    }
+}
+
+
+@media  screen and (max-width: 1080px){
+
+    .topText{
+        margin-left: 30%;
+        width: 60vw;
+    }
+
+    .inputBox1{
+        padding-top: 20px;
+        margin-top: 20px;
+        position: relative;
+        left: 4vw;
+        font-weight: bold;
+
+    }
+
+    .inputBox2{
+        width: 50vw
+
+    }
+
+    .pst1{
+        position: relative;
+        left: 60%
+    }
+
+    .pst2{
+        position: relative;
+        left: 10vw;
+        bottom: 42px
+    }
+}
+
+@media  screen and (max-width: 600px){
+    .topText{
+        margin-left: 25vw;
+        width: 60vw;
+    }
+
+    .outBox{
+        margin-left: 2vw;
+        width: 90vw;
+    }
+
+    .inputBox1{
+        padding-top: 5px;
+        margin-top: 20px;
+        position: relative;
+        left: 4vw;
+        font-weight: bold;
+        font-size: 2rem;
+
+    }
+
+    .inputBox2{
+        width: 80vw;
+    }
+
+    .pst1{
+        position: relative;
+        left: 55%
+    }
+
+    .pst2{
+        position: relative;
+        left: 18%;
+        bottom: 42px
+    }
+
+    .toCenter{
+        text-align: center;
+    }
+}

@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/style2.css"/>
 </head>
 <body>
 
@@ -34,28 +35,32 @@
         <div>
 
 
-                <div class="position mrg-tp" style="display: flex">
+                <div class="topText mrg-tp" style="display: flex">
                     <p  style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray">ADD CATEGORY</p>
 
                 </div>
 
-                <div class="position outline" style="height: 40vh; width: 60vw;">
+                <div class=" outBox" style="height: 20vh;">
 
 
 
                     <form action="/addCategory" method="post">
 
-                        <div class=" outline" style="height: 70% ;width: 100%">
-                            <label>
-                                CATEGORY NAME:  <input type="text" name="categoryName" required>
+                        <div class=" outline" style="height: 15vh ;width: 100%; padding-bottom: 10%; border: solid 2px; border-color: #8899ab">
+                            <label class="inputBox1">
+                                <p class="toCenter">CATEGORY NAME:</p>  <input class="inputBox2" type="text" name="categoryName" required>
                             </label>
                         </div>
 
-                        <button type="submit"  class="confirmBtn">CONFIRM</button>
+                        <button type="submit"  class="confirmBtn pst1">CONFIRM</button>
                     </form>
-                    <form action="/market" method="post">
-                        <button type="submit"  class="cancelBtn">CANCEL</button>
+
+
+                    <form action="/category" method="post">
+                        <button type="submit"  class="cancelBtn pst2">CANCEL</button>
                     </form>
+
+
                 </div>
             </div>
 
@@ -64,6 +69,7 @@
 
 
 </div>
+
 
 </body>
 </html>
