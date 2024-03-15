@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/addItem.css"/>
 </head>
 <body>
 
@@ -27,31 +28,31 @@
     </div>
 </nav>
 
-<div class="outline row" style="position: relative; left: 12px; border-color: purple">
+<div class="row outline topContainer" style="position: relative; left: 12px; border-color: purple">
 <!--    <div class="row " style="height: 20vh;">-->
 
 
 <!--        <div>-->
 
 
-            <div class="outline position col-3">
-                <p  style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray">ADD ITEM</p>
-
+            <div class="col-lg-3 outline">
+                <p class="sideText" style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray; width: 100%">ADD ITEM</p>
             </div>
 
-            <div class="position outline col-9" style="height: 85vh; width: 60vw; border-color: red">
+
+            <div class="col-lg-9  outline " style="height: 85vh; width: 60vw; border-color: red">
 
                 <form action="/addItem" method="post">
 
-                    <div class=" outline" style="height: 100% ;width: 100%">
-                        <label style="width: 100%">
-                            NAME:  <input type="text" name="itemName" required>
+                    <div class="outContainer outline" style="height: 100% ;width: 100%">
+                        <label class="layout-adj" style="width: 100%">
+                            <p> NAME: </p> <input class="inputBox" type="text" name="itemName" required>
                         </label>
 
-                        <label style="width: 100%">
-                            CATEGORY:  <select name="itemCategory" required>
+                        <label class="layout-adj" style="width: 100%">
+                            <p>CATEGORY: </p> <select class="option" name="itemCategory" required>
                                 <% for(let i = 0 ; i < category.length; i++){%>
-                                    <option value="<%= category[i].name %>"> <%= category[i].name %> </option>
+                                    <option value="<%= category[i].name %>" style="text-transform: uppercase"> <%= category[i].name %> </option>
                                 <%}%>
                             </select>
                         </label>
@@ -60,22 +61,23 @@
 <!--                            Date:  <input type="text" name="Date">-->
 <!--                        </label>-->
 
-                        <label style="width: 100%">
-                            IMAGE:  <input type="text" name="imageURL">
+                        <label class="layout-adj" style="width: 100%">
+                            <p> IMAGE: </p> <input class="inputBox imageInputBox" type="text" name="imageURL">
                         </label>
 
-                        <label style="width: 100%">
-                            SELLER COMMENT:  <input type="text" name="itemDetail" required>
+                        <label class="layout-adj"  style="width: 100%">
+                            <p> PRICE:  </p><input class="inputBox" type="number" step="0.01" name="itemPrice" required>
                         </label>
-                        <label style="width: 100%">
-                            PRICE:  <input type="number" name="itemPrice" required>
+
+                        <label class="layout-adj" style="width: 100%;">
+                            <p> SELLER COMMENT: </p> <textarea class="detail-box" name="itemDetail" required></textarea>
                         </label>
                     </div>
 
-                    <button type="submit"  class="confirmBtn">CONFIRM</button>
+                    <button type="submit"  class="confirmBtn pst1">CONFIRM</button>
                 </form>
                 <form action="/market" method="post">
-                    <button type="submit"  class="cancelBtn">CANCEL</button>
+                    <button type="submit"  class="cancelBtn pst2">CANCEL</button>
                 </form>
             </div>
         </div>
