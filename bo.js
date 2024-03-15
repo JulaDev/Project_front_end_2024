@@ -24,13 +24,26 @@ app.get('/home', (req, res)=>{
 })
 
 app.get('/market',(req, res)=>{
-    res.render('./market.ejs');
+    db.query((`SELECT * FROM item_list`), (err, row)=>{
+        if(err) throw err;
+
+        db.query(`SELECT * FROM categories`,(err, categories)=>{
+            if(err) throw err;
+
+            res.render('market',{ data: row , categoryList: categories });
+
+        })
+    })
 })
 app.get('/history',(req, res)=>{
     res.render('./history.ejs');
 })
 app.get('/category',(req, res)=>{
-    res.render('./category.ejs');
+    db.query(`SELECT * FROM categories`, (err, row)=>{
+        if(err) throw err;
+
+        res.render('category',{ categoryList: row });
+    })
 })
 app.get('/seller',(req, res)=>{
     res.render('./seller.ejs');
@@ -53,6 +66,11 @@ app.get('/addCategory',(req,res)=>{
     res.render('./addCategory.ejs')
 })
 
+app.get('/editCategory',(req, res)=>{
+
+    res.render('./editCategory.ejs')
+})
+
 
 
 // POST UNDER =======================================
@@ -63,6 +81,8 @@ db.query((`SELECT id FROM user`), (err, user)=>{
     // make login algorithm
 
 })
+
+
 
 app.post('/', (req, res)=>{
 
@@ -104,9 +124,6 @@ app.post('/category', (req, res)=>{
 
 })
 
-app.post("/getMarket",(req, res)=>{
-    res.redirect('/market')
-})
 
 app.post('/addItem', (req, res)=>{
     const dateData = new Date();
@@ -128,16 +145,11 @@ app.post('/addItem', (req, res)=>{
 
         console.log("ITEM IS ADDED.")
 
-        db.query((`SELECT * FROM item_list`), (err, row)=>{
-            if(err) throw err;
-
-            db.query(`SELECT * FROM categories`,(err, categories)=>{
-                if(err) throw err;
-
-                res.render('market',{ data: row , categoryList: categories });
-            })
-        })
     })
+
+    res.redirect('/market')
+
+
 
 })
 
@@ -156,16 +168,7 @@ app.post('/removeItem', (req, res)=>{
 
     })
 
-    db.query((`SELECT * FROM item_list`), (err, row)=>{
-        if(err) throw err;
-
-        db.query(`SELECT * FROM categories`,(err, categories)=>{
-            if(err) throw err;
-
-            res.render('market',{ data: row , categoryList: categories });
-        })
-
-    })
+    res.redirect('/market')
 
     console.log(`Selected ITEM: ${rm}`)
 })
@@ -188,14 +191,15 @@ app.post('/addCategory', (req, res)=>{
 
         })
 
-        db.query(`SELECT * FROM categories`, (err, row)=>{
-            if(err) throw err;
-
-            res.render('category',{ categoryList: row });
-        })
+        res.redirect('/category')
 
 
 })
+
+app.post('/editCategory',(req, res)=>{
+
+})
+
 
 app.post('/removeCategory', (req, res)=>{
 
@@ -209,11 +213,7 @@ app.post('/removeCategory', (req, res)=>{
 
     })
 
-    db.query(`SELECT * FROM categories`, (err, cat)=>{
-        if(err) throw err;
-
-        res.render('category',{ categoryList: cat });
-    })
+    res.redirect('/category')
 
 
 
@@ -235,22 +235,6 @@ app.post('/arrange', (req,res)=>{
 })
 
 
-function cancelEntry(){
-    app.post('/market', (req, res)=>{
-
-        db.query((`SELECT * FROM item_list`), (err, row)=>{
-            if(err) throw err;
-
-            db.query(`SELECT * FROM categories`,(err, categories)=>{
-                if(err) throw err;
-
-                res.render('market',{ data: row , categoryList: categories });
-            })
-
-        })
-
-    })
-}
 
 
 app.listen(port, ()=>{
