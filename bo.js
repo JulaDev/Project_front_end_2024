@@ -68,7 +68,7 @@ app.get('/addCategory',(req,res)=>{
 
 app.get('/editCategory',(req, res)=>{
 
-    res.render('./editCategory.ejs')
+    res.render('./editCategory.ejs' )
 })
 
 
@@ -197,6 +197,33 @@ app.post('/addCategory', (req, res)=>{
 })
 
 app.post('/editCategory',(req, res)=>{
+
+    let readyData = req.body.categoryEdit;
+
+    console.log(`SELECTED DATA TO UPDATE: ${readyData}`)
+
+    res.render('./editCategory.ejs', {data: readyData})
+})
+
+
+
+app.post('/updateCategory',(req, res)=>{
+
+    const oldData = req.body.oldName;
+    const newData = req.body.categoryName;
+
+    console.log('Old DATA: '+oldData);
+
+    const sql = `UPDATE categories SET name = '${newData}' WHERE name = '${oldData}'`
+
+    db.query(sql, (err, data)=>{
+        if(err) throw err;
+
+        console.log("Data has been updated!")
+
+    })
+
+    res.redirect('/category')
 
 })
 
