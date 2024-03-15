@@ -32,6 +32,7 @@ item_list TABLE
 
     create table item_list(
     id int auto_increment primary key,
+    date varchar(30) not null,
     category varchar(20) not null,
     name varchar(20) not null,
     detail varchar(600) not null,
@@ -65,7 +66,7 @@ category TABLE
 
 item_list TABLE
 
-    INSERT INTO item_list(category, name, detail, price)
+    INSERT INTO item_list(category, date, name, detail, price)
     values('desert', 'Choco', 'This is very sweet.', 4.25)
     ;
 

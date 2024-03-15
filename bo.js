@@ -20,25 +20,18 @@ app.get('/', (req, res)=>{
 
 app.get('/home', (req, res)=>{
     res.render('./home.ejs');
-
 })
 
 app.get('/market',(req, res)=>{
     res.render('./market.ejs');
 })
 app.get('/history',(req, res)=>{
-    //get category DB
-    //get item list DB
     res.render('./history.ejs');
 })
 app.get('/category',(req, res)=>{
-    //get category DB
-    //get item list DB
     res.render('./category.ejs');
 })
 app.get('/seller',(req, res)=>{
-    //get category DB
-    //get item list DB
     res.render('./seller.ejs');
 })
 
@@ -50,19 +43,6 @@ app.get('/addCategory',(req,res)=>{
     res.render('./addCategory.ejs')
 })
 
-app.post("/toMarket", (req, res)=>{
-
-
-})
-app.post("/toHistory", (req, res)=>{
-    res.redirect('/history');
-})
-app.post("/toCategory", (req, res)=>{
-    res.redirect('/category');
-})
-app.post("/toSeller", (req, res)=>{
-    res.redirect('/seller');
-})
 
 
 // POST UNDER =======================================
@@ -73,11 +53,6 @@ db.query((`SELECT id FROM user`), (err, user)=>{
     // make login algorithm
 
 })
-
-
-
-
-
 
 app.post('/', (req, res)=>{
 
@@ -124,7 +99,27 @@ app.post("/getMarket",(req, res)=>{
 })
 
 app.post('/addItem', (req, res)=>{
-    res.redirect('/home')
+    let item = req.body.item;
+
+    let sql = `INSERT INTO categories(name) VALUES('${category}');`
+
+
+    db.query(sql,(err, categories)=>{
+        if(err) throw err;
+
+        console.log(`Added Category: ${category}`);
+
+        for(let i = 0; i < categories.length; i++){
+            console.log(`This is ${i+1} Item in Category Table: ${categories[i].name}`)
+        }
+
+    })
+
+    db.query(`SELECT * FROM categories`, (err, row)=>{
+        if(err) throw err;
+
+        res.render('market',{ categoryList: row });
+    })
 })
 
 app.post('/editItem', (req, res)=>{
