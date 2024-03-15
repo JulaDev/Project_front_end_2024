@@ -10,7 +10,7 @@ FRONTEND_SE-953262 Term Project
 
 
 `
-## SQL
+## SQL CREATE TABLE
 
 user TABLE
 
@@ -49,6 +49,25 @@ other essential TABLE (please make a note above using the format under when new 
     );
 
 `
+## SQL DUMMY INSERT INTO TABLE
+
+user TABLE
+
+    INSERT INTO user(id, password, name, seller)
+    values('admin', 'admin0000', 'ADMIN', TRUE)
+    ;
+
+category TABLE
+
+    INSERT INTO category(name)
+    values('desert')
+    ;
+
+item_list TABLE
+
+    INSERT INTO item_list(category, name, detail, price)
+    values('desert', 'Choco', 'This is very sweet.', 4.25)
+    ;
 
 
 ## NPM 'IN USE'
