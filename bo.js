@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require("./db");
+const {query} = require("express");
 
 const app = express();
 
@@ -99,27 +100,36 @@ app.post("/getMarket",(req, res)=>{
 })
 
 app.post('/addItem', (req, res)=>{
-    let item = req.body.item;
+    const dateData = new Date();
 
-    let sql = `INSERT INTO categories(name) VALUES('${category}');`
+    let date = `${dateData.getFullYear()}. ${dateData.getMonth()+1}. ${dateData.getDate()}`
 
+    let itemName = req.body.itemName;
+    let category = req.body.itemCategory;
+    let detail = req.body.itemDetail;
+    let price = req.body.itemPrice;
 
-    db.query(sql,(err, categories)=>{
+    console.log(`'${date}', '${itemName}', '${category}', '${detail}', '${price}'`)
+
+    let add = `INSERT INTO item_list(date, category, name, detail, price)
+    VALUES ('${date}', '${category}', '${itemName}', '${detail}', '${price}')`
+
+    db.query(add, (err, row)=>{
         if(err) throw err;
 
-        console.log(`Added Category: ${category}`);
+        console.log("ITEM IS ADDED.")
 
-        for(let i = 0; i < categories.length; i++){
-            console.log(`This is ${i+1} Item in Category Table: ${categories[i].name}`)
-        }
+        db.query((`SELECT * FROM item_list`), (err, row)=>{
+            if(err) throw err;
 
+            db.query(`SELECT * FROM categories`,(err, categories)=>{
+                if(err) throw err;
+
+                res.render('market',{ data: row , categoryList: categories });
+            })
+        })
     })
 
-    db.query(`SELECT * FROM categories`, (err, row)=>{
-        if(err) throw err;
-
-        res.render('market',{ categoryList: row });
-    })
 })
 
 app.post('/editItem', (req, res)=>{

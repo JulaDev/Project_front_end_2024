@@ -27,43 +27,48 @@
     </div>
 </nav>
 
-<div class="row" style="position: relative; left: 12px">
-    <div class="row " style="height: 80vh;">
+<div class="outline row" style="position: relative; left: 12px; border-color: purple">
+<!--    <div class="row " style="height: 20vh;">-->
 
 
-        <div>
+<!--        <div>-->
 
 
-            <div class="position mrg-tp" style="display: flex">
+            <div class="outline position col-3">
                 <p  style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray">ADD ITEM</p>
 
             </div>
 
-            <div class="position outline" style="height: 40vh; width: 60vw;">
+            <div class="position outline col-9" style="height: 85vh; width: 60vw; border-color: red">
 
+                <form action="/addItem" method="post">
 
-
-                <form action="/addCategory" method="post">
-
-                    <div class=" outline" style="height: 70% ;width: 100%">
-                        <label>
-                            CATEGORY NAME:  <input type="text" name="itemName" required>
+                    <div class=" outline" style="height: 100% ;width: 100%">
+                        <label style="width: 100%">
+                            NAME:  <input type="text" name="itemName" required>
                         </label>
 
-                        <label>
-                            CATEGORY NAME:  <input type="text" name="itemCategory" required>
+                        <label style="width: 100%">
+                            CATEGORY:  <select name="itemCategory" required>
+                                <option value="milk"> MILK </option>
+                                <option value="desert"> DESERT </option>
+                                <option value="flavor"> FLAVOR </option>
+                            </select>
                         </label>
 
-                        <label>
-                            CATEGORY NAME:  <input type="text" name="Date" required>
+<!--                        <label style="width: 100%">-->
+<!--                            Date:  <input type="text" name="Date">-->
+<!--                        </label>-->
+
+                        <label style="width: 100%">
+                            IMAGE:  <input type="text" name="imageURL">
                         </label>
 
-                        <label>
-                            CATEGORY NAME:  <input type="text" name="imageURL">
+                        <label style="width: 100%">
+                            SELLER COMMENT:  <input type="text" name="itemDetail" required>
                         </label>
-
-                        <label>
-                            CATEGORY NAME:  <input type="text" name="itemName" required>
+                        <label style="width: 100%">
+                            PRICE:  <input type="number" name="itemPrice" required>
                         </label>
                     </div>
 
