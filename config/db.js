@@ -1,4 +1,4 @@
-//dbConnection.js
+//db.js
 const mysql = require("mysql2");
 
 let config =  { host: "localhost",

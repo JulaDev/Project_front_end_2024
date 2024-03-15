@@ -3,10 +3,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
-const listItem = require("./model/listItem")
 const db = require("./config/db.js");
 
-const { ProductItemsModel } = require("./model/listItem");
+const { snackItems, dessertItems, meatItems, seafoodItems, fruitItems, vegetableItems } = require("./model/listItem");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -49,12 +48,6 @@ app.get('/homepage', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'html', 'homepage.html'));
 });
 
-const snackItems = new ProductItemsModel("snack_items");
-const dessertItems = new ProductItemsModel("dessert_items");
-const meatItems = new ProductItemsModel("meat_items");
-const seafoodItems = new ProductItemsModel("seafood_items");
-const fruitItems = new ProductItemsModel("fruit_items");
-const vegetableItems = new ProductItemsModel("vegetable_items");
 
 (async () => {
   await snackItems.defineProductItems();
