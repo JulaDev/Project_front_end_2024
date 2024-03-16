@@ -134,11 +134,12 @@ app.post('/addItem', (req, res)=>{
     let category = req.body.itemCategory;
     let detail = req.body.itemDetail;
     let price = req.body.itemPrice;
+    let image = req.body.imageURL;
 
     console.log(`'${date}', '${itemName}', '${category}', '${detail}', '${price}'`)
 
-    let add = `INSERT INTO product(date, product_category, product_name, product_description, product_sales_count, product_price)
-    VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}')`
+    let add = `INSERT INTO product(date, product_category, product_name, product_description, product_sales_count, product_price, product_image, product_price_promotion)
+    VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}', '${image}', ' ')`
 
     db.query(add, (err, row)=>{
         if(err) throw err;

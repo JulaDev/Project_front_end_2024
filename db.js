@@ -21,7 +21,9 @@ let createItemTable = `CREATE TABLE IF NOT EXISTS product(
     product_name varchar(20) not null,
     product_description varchar(600) not null,
     product_sales_count int,
-    product_price decimal(15,2) not null
+    product_price decimal(15,2) not null,
+    product_image varchar(400),
+    product_price_promotion varchar(50)
     );`
 
 let createCategoryTable = `CREATE TABLE IF NOT EXISTS category(

@@ -37,8 +37,10 @@ product TABLE
     product_name varchar(20) not null,
     product_description varchar(600) not null,
     product_sales_count int,
-    product_price decimal(15,2) not null
-    );`
+    product_price decimal(15,2) not null,
+    product_image varchar(400),
+    product_price_promotion varchar(50)
+    );
 
 other essential TABLE (please make a note above using the format under when new table is created.)
 
@@ -65,8 +67,8 @@ category TABLE
 
 product TABLE
 
-    `INSERT INTO product(date, product_category, product_name, product_description, product_sales_count, product_price)
-    VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}')`
+    `INSERT INTO product(date, product_category, product_name, product_description, product_sales_count, product_price, product_image, product_price_promotion)
+    VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}', '${image}', ' ')`
 
 
 ## NPM 'IN USE'
