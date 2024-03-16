@@ -71,6 +71,24 @@ product TABLE
     VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}', '${image}', ' ')`
 
 
+## SQL UPDATE
+
+UPDATE "product" TABLE
+
+    `UPDATE product SET product_name = '${itemName}' WHERE product_name = '${row[0].product_name}';`
+    `UPDATE product SET product_category = '${category}' WHERE product_category = '${row[0].product_category}';`
+    `UPDATE product SET product_description = '${detail}' WHERE product_description = '${row[0].product_description}';`
+    `UPDATE product SET product_price = '${price}' WHERE product_price = '${row[0].product_price}';`
+    `UPDATE product SET product_image = '${image}' WHERE product_image = '${row[0].product_image}';`
+    `UPDATE product SET product_price_promotion = '${promotion}' WHERE product_price_promotion = '${row[0].product_price_promotion}';`
+
+
+UPDATE "category" TABLE
+
+    `UPDATE category SET category_name = '${newData}' WHERE category_name = '${oldData}'`    
+
+
+
 ## NPM 'IN USE'
 
 Please install npm under to run.

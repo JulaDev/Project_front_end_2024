@@ -210,12 +210,12 @@ app.post('/updateItem', (req, res)=>{
 
         //input check
 
-        console.log(`NEW NAME: ${itemName}`)
-        console.log(`NEW CATEGORY: ${category}`)
-        console.log(`NEW DESCRIPTION: ${detail}`)
-        console.log(`NEW PRICE: ${price}`)
-        console.log(`NEW IMAGE: ${image}`)
-        console.log(`NEW PROMOTION: ${promotion}`)
+        console.log(`UPDATED NAME: ${itemName}`)
+        console.log(`UPDATED CATEGORY: ${category}`)
+        console.log(`UPDATED DESCRIPTION: ${detail}`)
+        console.log(`UPDATED PRICE: ${price}`)
+        console.log(`UPDATED IMAGE: ${image}`)
+        console.log(`UPDATED PROMOTION: ${promotion}`)
 
 
         db.query(updateName,(err, row)=>{
