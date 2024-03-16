@@ -1,0 +1,174 @@
+
+@media  screen and (max-width: 3000px){
+
+    .pst-M{
+        position: relative;
+        left: 6.5vw
+    }
+
+    .marketSideBar{
+        height: 67vh;
+        overflow: scroll;
+
+    }
+
+    .hideNavText2{
+        display: none;
+    }
+
+    .nav-height{
+        height: 65px
+    }
+
+
+}
+
+@media  screen and (max-width: 2500px){
+    .pst-M{
+        position: relative;
+        left: 6vw
+    }
+
+}
+
+
+
+@media  screen and (max-width: 2000px){
+
+    .pst-M{
+        position: relative;
+        left: 5vw
+    }
+
+}
+
+@media  screen and (max-width: 1850px){
+    .pst-M{
+        position: relative;
+        left: 4vw
+    }
+
+}
+
+@media  screen and (max-width: 1600px){
+
+    .pst-M{
+        position: relative;
+        left: 2vw
+    }
+}
+
+@media  screen and (max-width: 1250px){
+
+
+    .pst-M{
+        position: relative;
+        left: -2vw
+    }
+
+}
+
+
+@media  screen and (max-width: 1080px){
+
+    .pst-M{
+        position: relative;
+        left: -2vw
+    }
+
+
+}
+
+@media  screen and (max-width: 900px){
+    .hideAddItemBTN{
+        display: none;
+    }
+
+}
+
+@media  screen and (min-width: 765px){
+    .hideNavText2{
+        display: none;
+    }
+
+    .hideItemText{
+        display: none;
+    }
+
+}
+
+@media  screen and (max-width: 765px){
+    .marketSideBar{
+        height: 3.8vh;
+        float: left;
+
+        background-color: #79af7c;
+
+    }
+
+    .market-cat{
+        padding-top: 7px;
+        display: flex;
+        font-weight: bold;
+    }
+
+    .category_box{
+        margin-left: 0.1px;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+        font-weight: lighter;
+    }
+
+    .hiddenText{
+        display: none;
+    }
+
+    .hideNavText{
+        display: none;
+    }
+    .showText2{
+        margin-left: 4%;
+        display: block;
+        color: #0f5132;
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+
+    .showHiddenBar{
+        display: block;
+        color: #0f5132;
+        text-align: center;
+        font-weight: bold;
+        background-color: #bad7bc;
+        width: 100%;
+        font-size: 1.2rem;
+
+        text-decoration-line: none;
+
+
+    }
+
+
+}
+
+@media  screen and (max-width: 660px){
+
+    .nav-height{
+        height: 65px
+    }
+
+
+
+}
+
+@media  screen and (max-width: 600px){
+
+
+
+}

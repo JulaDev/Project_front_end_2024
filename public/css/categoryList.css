@@ -118,7 +118,17 @@
     .hiddenBTN{
         display: block;
     }
+
 }
+
+@media screen and(max-width: 767px) {
+
+    .hideCatTxt{
+        display: none;
+    }
+
+}
+
 
 @media  screen and (max-width: 660px){
     .titleDeco{
@@ -145,6 +155,9 @@
 
     .hiddenBTN{
         display: block;
+    }
+    .hideCatTxt{
+        display: none;
     }
 }
 

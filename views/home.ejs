@@ -15,17 +15,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/market.css"/>
 </head>
 <body>
 
 <!--HOME _PAGE-->
 
 <!--NAV _BAR-->
-    <nav class="homeTitle-min navColor" style="height: 60px; padding-top: 6px">
-        <div class="container-fluid">
-            <a class="homeTitle-mg navbar-brand navbarX" href="/home">SEASON GREEN</a>
-            </div>
-    </nav>
+<nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
+    <div class="container-fluid">
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/home">SEASON GREEN</a>
+        <a style="font-weight: normal" class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/home">SEASON GREEN</a>
+    </div>
+</nav>
+<div class="hideNavText2 showHiddenBar">
+    <a class=" showHiddenBar" href="/" style="color: white;  background-color: rgb(116, 185, 70);">LOG OUT</a>
+</div>
+
+
     <div class="row" style="position: relative; left: 12px">
 
 <!--       SIDE LIST-->
@@ -47,7 +54,7 @@
 
 <!--            CONTROL PANEL-->
         <div class="col-xl-9 col-lg-9 col-12 col-md-12 col-sm-12 col-xs-12" >
-            <div class="row" style="margin: 10%; height: 30vw; position: relative; right: 7vw">
+            <div class="row" style="margin: 10%; height: 30vw; position: relative; right: 5px">
                 <div class="p1small col-lg-6 col-md-12">
 <!--                    To make apply css both form and button should be applied.-->
                     <form action="/market" method="post" style="height: 95%">
