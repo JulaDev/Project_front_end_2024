@@ -6,16 +6,13 @@ class BaseSQLModel {
     this.tableName = tableName;
   }
 
-  executeQuery(query, params) {
-    return new Promise((resolve, reject) => {
-      pool.query(query, params, (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results);
-        }
-      });
-    });
+  async executeQuery(query, params) {
+    try {
+      const [results, fields] = await pool.query(query, params);
+      return results;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async findAll() {

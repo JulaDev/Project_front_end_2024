@@ -21,9 +21,38 @@ app.get('/', function(req, res) {
     res.render('login');
 });
 
+// app.get('/list', async function(req, res) {
+//     const productNames = await itemlist.getProductItems();
+//     res.render('list', { listTitle: "product", items: productNames });
+// });
+
+
 app.get('/list', async function(req, res) {
-    const productNames = await itemlist.getProductItems();
-    res.render('list', { listTitle: "product", items: productNames });
+    const page = req.query.page ? parseInt(req.query.page) : 1;
+    const pageSize = 15; // Number of items per page
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+
+    console.log(`Page: ${page}, Start Index: ${startIndex}, End Index: ${endIndex}`);
+
+    try {
+        const product = await itemlist.getProductItems(startIndex, endIndex);
+        const totalItems = await itemlist.getTotalProductItemsCount();
+        const totalPages = Math.ceil(totalItems / pageSize);
+
+        console.log(`Total Items: ${totalItems}, Total Pages: ${totalPages}`);
+        console.log("Items Fetched:", product);
+
+        res.render('list', { 
+            listTitle: "Product", 
+            items: product,
+            totalPages,
+            currentPage: page
+        });
+    } catch (error) {
+        console.error("Error getting product items:", error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 app.get('/list/snack', async function(req, res) {

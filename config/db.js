@@ -1,23 +1,15 @@
-//db.js
 const mysql = require("mysql2");
 
-let config =  { host: "localhost",
+// Database configuration
+const config = {
+    host: "localhost",
     user: "root",
     password: "373600",
     database: "groceries_shop"
 };
 
+// Create a connection pool
+const pool = mysql.createPool(config);
 
-const dbConnection = mysql.createConnection(config);
-
-// Connect to the database
-dbConnection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to database:', err);
-        return;
-    }
-    console.log('Database is connected');
-});
-
-// Export the database connection
-module.exports = dbConnection;
+// Export the pool object
+module.exports = pool.promise(); // Exporting the promise-based pool for async/await syntax
