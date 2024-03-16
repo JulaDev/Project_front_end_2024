@@ -4,7 +4,7 @@ FRONTEND_SE-953262 Term Project
 ## UPDATE : 2024.03.15
 
 ### MEMBER (Please fill your name)
-    642115501 Changseong Lee
+    642115501 Changseong Lee [COMMIT: Pipe-lines]
     Member2
     Member3
 
