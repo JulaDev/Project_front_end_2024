@@ -101,6 +101,7 @@ app.post('/home', (req, res)=>{
 app.post('/history', (req, res)=>{
 })
 
+
 app.post('/market', (req, res)=>{
 
     db.query((`SELECT * FROM product`), (err, row)=>{
@@ -261,6 +262,8 @@ app.post('/removeItem', (req, res)=>{
 
     console.log(`Selected ITEM: ${rm}`)
 })
+
+
 
 app.post('/addCategory', (req, res)=>{
 

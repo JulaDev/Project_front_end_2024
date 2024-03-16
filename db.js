@@ -34,7 +34,7 @@ let createCategoryTable = `CREATE TABLE IF NOT EXISTS category(
 connection.query(createItemTable, (err, row)=>{
     if(err) throw err;
 
-    console.log('ITEM TABLE IS CREATED IF THERE WAS NO TABLE');
+    console.log('PRODUCT TABLE IS CREATED IF THERE WAS NO TABLE');
 })
 connection.query(createUserTable, (err, row)=>{
     if(err) throw err;
