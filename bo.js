@@ -24,10 +24,10 @@ app.get('/home', (req, res)=>{
 })
 
 app.get('/market',(req, res)=>{
-    db.query((`SELECT * FROM item_list`), (err, row)=>{
+    db.query((`SELECT * FROM product`), (err, row)=>{
         if(err) throw err;
 
-        db.query(`SELECT * FROM categories`,(err, categories)=>{
+        db.query(`SELECT * FROM category`,(err, categories)=>{
             if(err) throw err;
 
             res.render('market',{ data: row , categoryList: categories });
@@ -39,7 +39,7 @@ app.get('/history',(req, res)=>{
     res.render('./history.ejs');
 })
 app.get('/category',(req, res)=>{
-    db.query(`SELECT * FROM categories`, (err, row)=>{
+    db.query(`SELECT * FROM category`, (err, row)=>{
         if(err) throw err;
 
         res.render('category',{ categoryList: row });
@@ -51,7 +51,7 @@ app.get('/seller',(req, res)=>{
 
 app.get('/addItem',(req,res)=>{
 
-    let sql = `SELECT * FROM categories`
+    let sql = `SELECT * FROM category`
 
     db.query(sql, (err, row)=>{
         if(err) throw err;
@@ -99,10 +99,10 @@ app.post('/history', (req, res)=>{
 
 app.post('/market', (req, res)=>{
 
-    db.query((`SELECT * FROM item_list`), (err, row)=>{
+    db.query((`SELECT * FROM product`), (err, row)=>{
         if(err) throw err;
 
-        db.query(`SELECT * FROM categories`,(err, categories)=>{
+        db.query(`SELECT * FROM category`,(err, categories)=>{
             if(err) throw err;
 
             res.render('market',{ data: row , categoryList: categories });
@@ -115,7 +115,7 @@ app.post('/market', (req, res)=>{
 app.post('/category', (req, res)=>{
 
 
-        db.query(`SELECT * FROM categories`,(err, category)=>{
+        db.query(`SELECT * FROM category`,(err, category)=>{
             if(err) throw err;
 
             res.render('category',{ categoryList: category });
@@ -137,8 +137,8 @@ app.post('/addItem', (req, res)=>{
 
     console.log(`'${date}', '${itemName}', '${category}', '${detail}', '${price}'`)
 
-    let add = `INSERT INTO item_list(date, category, name, detail, price)
-    VALUES ('${date}', '${category}', '${itemName}', '${detail}', '${price}')`
+    let add = `INSERT INTO product(date, product_category, product_name, product_description, product_sales_count, product_price)
+    VALUES ('${date}', '${category}', '${itemName}', '${detail}', 0 , '${price}')`
 
     db.query(add, (err, row)=>{
         if(err) throw err;
@@ -161,7 +161,7 @@ app.post('/removeItem', (req, res)=>{
 
     let rm = req.body.removeItem;
 
-    db.query(`DELETE FROM item_list WHERE id = ${rm};`,(err, category)=>{
+    db.query(`DELETE FROM product WHERE product_id = ${rm};`,(err, category)=>{
         if(err) throw err;
 
         console.log(`Selected Item ID: ${rm} REMOVED`)
@@ -177,7 +177,7 @@ app.post('/addCategory', (req, res)=>{
 
     let category = req.body.categoryName;
 
-    let sql = `INSERT INTO categories(name) VALUES('${category}');`
+    let sql = `INSERT INTO category(category_name) VALUES('${category}');`
 
 
         db.query(sql,(err, categories)=>{
@@ -186,7 +186,7 @@ app.post('/addCategory', (req, res)=>{
             console.log(`Added Category: ${category}`);
 
             for(let i = 0; i < categories.length; i++){
-                console.log(`This is ${i+1} Item in Category Table: ${categories[i].name}`)
+                console.log(`This is ${i+1} Item in Category Table: ${categories[i].category_name}`)
             }
 
         })
@@ -214,7 +214,7 @@ app.post('/updateCategory',(req, res)=>{
 
     console.log('Old DATA: '+oldData);
 
-    const sql = `UPDATE categories SET name = '${newData}' WHERE name = '${oldData}'`
+    const sql = `UPDATE category SET category_name = '${newData}' WHERE category_name = '${oldData}'`
 
     db.query(sql, (err, data)=>{
         if(err) throw err;
@@ -233,7 +233,7 @@ app.post('/removeCategory', (req, res)=>{
     let rm = req.body.removeCategory;
 
 
-    db.query(`DELETE FROM categories WHERE id = ${rm};`,(err, category)=>{
+    db.query(`DELETE FROM category WHERE category_id = ${rm};`,(err, category)=>{
         if(err) throw err;
 
         console.log(`Selected Category ID: ${rm} REMOVED`)
@@ -253,10 +253,10 @@ app.post('/removeCategory', (req, res)=>{
 app.post('/arrange', (req,res)=>{
 
 
-    db.query((`SELECT * FROM item_list`), (err, row)=>{
+    db.query((`SELECT * FROM product`), (err, row)=>{
         if(err) throw err;
 
-        db.query(`SELECT * FROM categories`,(err, categories)=>{
+        db.query(`SELECT * FROM category`,(err, categories)=>{
             if(err) throw err;
 
             res.render('market',{ data: row , categoryList: categories });

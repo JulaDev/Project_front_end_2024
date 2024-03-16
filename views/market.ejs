@@ -50,7 +50,7 @@
 
                         <form action="/arrange" method="post">
                             <button type="submit" class="category_box-lg category_box" style="text-align: center; text-transform: uppercase;">
-                                <%= categoryList[i].name %>
+                                <%= categoryList[i].category_name %>
                             </button>
                         </form>
 
@@ -80,11 +80,11 @@
                 <% for(let i = 0 ; i < data.length; i ++){ %>
 
                         <div class=" row outline list-box-lg list-box-md list-box-sm">
-                            <p class=" col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: left; padding-left: 12px">ID: <%= data[i].id %></p>
+                            <p class=" col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: left; padding-left: 12px">ID: <%= data[i].product_id %></p>
 
                             <div class=" col-lg-7 col-md-7 col-sm-7 col-7" style="display: flex" >
-                                <div style="text-align: left; width: 50%"> <%= data[i].name %></div>
-                                <div  style="text-align: right; width: 50%"> <%= data[i].price %> </div>
+                                <div style="text-align: left; width: 50%"> <%= data[i].product_name %></div>
+                                <div  style="text-align: right; width: 50%">$ <%= data[i].product_price %> </div>
                             </div>
 
                             <div class=" col-lg-2 col-md-2 col-sm-2 col-2">
@@ -95,7 +95,7 @@
 
                             <div class=" col-lg-1 col-md-1 col-sm-1 col-1">
                             <form action="/removeItem" method="post">
-                                <button type="submit" class="list-box-Xbtn-lg list-box-Xbtn-md list-box-Xbtn-sm" name="removeItem" value="<%= data[i].id%>">X</button>
+                                <button type="submit" class="list-box-Xbtn-lg list-box-Xbtn-md list-box-Xbtn-sm" name="removeItem" value="<%= data[i].product_id%>">X</button>
                             </form>
                             </div>
 

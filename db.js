@@ -14,18 +14,19 @@ let createUserTable = `CREATE TABLE IF NOT EXISTS user(
     seller boolean not null
     );`
 
-let createItemTable = `CREATE TABLE IF NOT EXISTS item_list(
-    id int auto_increment primary key,
+let createItemTable = `CREATE TABLE IF NOT EXISTS product(
+    product_id int auto_increment primary key,
     date varchar(30) not null,
-    category varchar(20) not null,
-    name varchar(20) not null,
-    detail varchar(600) not null,
-    price decimal(15,2) not null
+    product_category varchar(20) not null,
+    product_name varchar(20) not null,
+    product_description varchar(600) not null,
+    product_sales_count int,
+    product_price decimal(15,2) not null
     );`
 
-let createCategoryTable = `CREATE TABLE IF NOT EXISTS categories(
-    id int auto_increment primary key,
-    name varchar(20) not null
+let createCategoryTable = `CREATE TABLE IF NOT EXISTS category(
+    category_id int auto_increment primary key,
+    category_name varchar(20) not null
     );`
 
 connection.query(createItemTable, (err, row)=>{
