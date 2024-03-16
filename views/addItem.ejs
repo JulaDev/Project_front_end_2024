@@ -28,29 +28,29 @@
     </div>
 </nav>
 
-<div class="row outline topContainer" style="position: relative; left: 12px; border-color: purple">
+<div class="row  topContainer" style="position: relative; left: 12px; border-color: purple">
 <!--    <div class="row " style="height: 20vh;">-->
 
 
 <!--        <div>-->
 
 
-            <div class="col-lg-3 outline">
-                <p class="sideText" style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray; width: 100%">ADD ITEM</p>
+            <div class="col-lg-3 ">
+                <p class="sideText">ADD ITEM</p>
             </div>
 
 
-            <div class="col-lg-9  outline " style="height: 85vh; width: 60vw; border-color: red">
+            <div class=" infoContainer col-lg-9 col-12   " style=" border-color: red">
 
                 <form action="/addItem" method="post">
 
-                    <div class="outContainer outline" style="height: 100% ;width: 100%">
-                        <label class="layout-adj" style="width: 100%">
-                            <p> NAME: </p> <input class="inputBox" type="text" name="itemName" required>
+                    <div class="outContainer outline">
+                        <label class="layout-adj">
+                            <p style="font-weight: bold"> NAME: </p> <input class="inputBox" type="text" name="itemName" placeholder="MANDATORY" required>
                         </label>
 
-                        <label class="layout-adj" style="width: 100%">
-                            <p>CATEGORY: </p> <select class="option" name="itemCategory" required>
+                        <label class="layout-adj">
+                            <p style="font-weight: bold">CATEGORY: </p> <select class="option" name="itemCategory" required>
                                 <% for(let i = 0 ; i < category.length; i++){%>
                                     <option value="<%= category[i].name %>" style="text-transform: uppercase"> <%= category[i].name %> </option>
                                 <%}%>
@@ -61,16 +61,16 @@
 <!--                            Date:  <input type="text" name="Date">-->
 <!--                        </label>-->
 
-                        <label class="layout-adj" style="width: 100%">
-                            <p> IMAGE: </p> <input class="inputBox imageInputBox" type="text" name="imageURL">
+                        <label class="layout-adj">
+                            <p style="font-weight: bold"> IMAGE: </p> <input class="inputBox imageInputBox" type="text" name="imageURL">
                         </label>
 
-                        <label class="layout-adj"  style="width: 100%">
-                            <p> PRICE:  </p><input class="inputBox" type="number" step="0.01" name="itemPrice" required>
+                        <label class="layout-adj">
+                            <p style="font-weight: bold"> PRICE:  </p> <input class="inputBox" type="number" step="0.01" name="itemPrice" placeholder="MANDATORY" required>
                         </label>
 
-                        <label class="layout-adj" style="width: 100%;">
-                            <p> SELLER COMMENT: </p> <textarea class="detail-box" name="itemDetail" required></textarea>
+                        <label class="layout-adj">
+                            <p style="font-weight: bold"> SELLER COMMENT: </p> <textarea class="detail-box" name="itemDetail" placeholder="MANDATORY" required></textarea>
                         </label>
                     </div>
 

@@ -1,0 +1,178 @@
+.hiddenBTN{
+    display: none;
+}
+
+@media  screen and (max-width: 3000px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 18%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 72vw
+    }
+
+
+    .cat-list-pst{
+        width: 96vw;
+        margin-left: 1.5vw;
+    }
+
+    .scroll-box{
+        margin-top: 3%;
+    }
+
+}
+
+@media  screen and (max-width: 2500px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 18%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 70vw
+    }
+
+
+    .cat-list-pst{
+        width: 96vw;
+        margin-left: 1.5vw;
+    }
+}
+
+@media  screen and (max-width: 2000px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 18%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 68vw
+    }
+
+
+}
+
+@media  screen and (max-width: 1500px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 25%;
+    }
+
+
+    .pst-X{
+        position: relative;
+        left: 59.2vw
+    }
+
+}
+
+
+@media  screen and (max-width: 1080px){
+
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 25%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 57vw
+    }
+
+    .cat-list-pst{
+        width: 94vw;
+        margin-left: 1.5vw;
+    }
+
+}
+
+@media  screen and (max-width: 900px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 30%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 45vw;
+        display: none;
+
+    }
+
+
+    .toCenter{
+        text-align: center;
+    }
+
+
+    .cat-list-pst{
+        width: 93vw;
+        margin-left: 1.5vw;
+    }
+
+    .hiddenBTN{
+        display: block;
+    }
+}
+
+@media  screen and (max-width: 660px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 18%;
+    }
+
+    .pst-X{
+        position: relative;
+        left: 53vw;
+        display: none;
+    }
+
+
+    .toCenter{
+        text-align: center;
+    }
+
+
+    .cat-list-pst{
+        width: 92vw;
+        margin-left: 1.5vw;
+    }
+
+    .hiddenBTN{
+        display: block;
+    }
+}
+
+@media  screen and (max-width: 600px){
+    .titleDeco{
+        border-bottom: solid 2px black;
+        width: 18%;
+    }
+
+    .pst-X{
+        position: relative;
+        top: 1000px;
+        margin-right: 20%;
+        display: none;
+    }
+
+
+    .toCenter{
+        text-align: center;
+    }
+
+
+    .cat-list-pst{
+        width: 92vw;
+        margin-left: 1.5vw;
+    }
+
+    .hiddenBTN{
+        display: block;
+    }
+}
