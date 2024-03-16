@@ -59,7 +59,7 @@
                         <label class="layout-adj">
                             <p style="font-weight: bold">CATEGORY: </p> <select class="option" name="itemCategory" required>
                                 <% for(let i = 0 ; i < category.length; i++){%>
-                                    <option value="<%= category[i].name %>" style="text-transform: uppercase"> <%= category[i].name %> </option>
+                                    <option value="<%= category[i].category_name %>" style="text-transform: uppercase"> <%= category[i].category_name %> </option>
                                 <%}%>
                             </select>
                         </label>
