@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Market</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/addItem.css"/>
+    <link rel="stylesheet" href="css/market.css"/>
+    <link rel="stylesheet" href="css/categoryList.css"/>
+</head>
+<body>
+
+<!--HOME _PAGE-->
+<!--NAV _BAR-->
+<nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
+    <div class="container-fluid">
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/home">SEASON GREEN</a>
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/home">ADD ITEM</a>
+    </div>
+</nav>
+
+<div class="hideNavText2 showHiddenBar">
+    <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
+</div>
+
+<div class="row  topContainer" style="position: relative; left: 12px; border-color: purple">
+    <!--    <div class="row " style="height: 20vh;">-->
+
+
+    <!--        <div>-->
+
+
+    <div class="col-lg-3 ">
+        <p class="sideText">EDIT ITEM</p>
+    </div>
+
+
+    <div class=" infoContainer col-lg-9 col-12   " style=" border-color: red">
+
+        <form action="/updateItem" method="post">
+
+            <div class="outContainer outline">
+                <label class="layout-adj">
+                    <p style="font-weight: bold"> NAME: </p> <input class="inputBox" type="text" name="itemName" value="<%= readyData[0].product_name%>" required>
+                </label>
+
+                <label class="layout-adj">
+                    <p style="font-weight: bold">CATEGORY: </p> <select class="option" name="itemCategory" required>
+                        <% for(let i = 0 ; i < category.length; i++){%>
+                            <option value="<%= category[i].category_name %>" style="text-transform: uppercase"> <%= category[i].category_name %> </option>
+                        <%}%>
+                    </select>
+                </label>
+
+                <!--                        <label style="width: 100%">-->
+                <!--                            Date:  <input type="text" name="Date">-->
+                <!--                        </label>-->
+
+                <label class="layout-adj">
+                    <p style="font-weight: bold"> IMAGE: </p> <input class="inputBox imageInputBox" type="text" name="imageURL" value="<%= readyData[0].product_image%>">
+                </label>
+
+                <label class="layout-adj">
+                    <p style="font-weight: bold"> PRICE:  </p> <input class="inputBox" type="number" step="0.01" name="itemPrice" placeholder="MANDATORY" value="<%= readyData[0].product_price%>" required>
+                </label>
+
+                <label class="layout-adj">
+                    <p style="font-weight: bold"> SELLER COMMENT: </p> <textarea class="detail-box" name="itemDetail" required> <%= readyData[0].product_description%></textarea>
+                </label>
+
+                <label class="layout-adj">
+                    <p style="font-weight: bold"> PROMOTION: </p> <input class="inputBox promotionBox" type="text" name="promotion" value="<%= readyData[0].product_promotion%>">
+                </label>
+            </div>
+
+            <button type="submit"  class="confirmBtn pst1" name="selectedData" value="<%= readyData[0].product_id%>">CONFIRM</button>
+        </form>
+        <form action="/market" method="post">
+            <button type="submit"  class="cancelBtn pst2">CANCEL</button>
+        </form>
+    </div>
+</div>
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>
