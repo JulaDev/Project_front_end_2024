@@ -8,10 +8,10 @@ connection.connect(()=>{
 })
 
 let createUserTable = `CREATE TABLE IF NOT EXISTS user(
-    id varchar(30) primary key,
-    password varchar(20) not null,
-    name varchar(30) not null,
-    seller boolean not null
+    uid int auto_increment primary key,
+    user_password varchar(20) not null,
+    user_name varchar(30) not null,
+    isSeller boolean not null
     );`
 
 let createItemTable = `CREATE TABLE IF NOT EXISTS product(
