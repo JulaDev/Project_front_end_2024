@@ -1,8 +1,12 @@
+//app.js
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const db = require("./config/db.js");
 
 const app = express();
+app.set("view engine", "ejs");
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
