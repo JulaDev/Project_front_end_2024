@@ -39,17 +39,20 @@
 
             <div class="marketSideBar col-xl-3 col-md-4 col-12">
 
-                <div class="hiddenText market-cat-lg market-cat-md market-cat market-sideTitle">
-                    CATEGORIES
-                </div>
+                <div class=" sidePst" style="text-align: center">
+                    <form action="/arrange" method="post">
 
-                <div>
+                        <button type="submit" class="hiddenText market-cat market categoryBtn" name="select" value="ALL" >
+                            CATEGORIES
+                        </button>
+
+                    </form>
 
                     <% for(let i = 0 ; i < categoryList.length ; i ++){ %>
 
 
                         <form action="/arrange" method="post">
-                            <button type="submit" class="category_box-lg category_box" style="text-align: center; text-transform: uppercase;">
+                            <button type="submit" class="categoryListPst category_box-lg category_box" style="text-align: left; text-transform: uppercase;" name="select" value="<%= categoryList[i].category_name %>" >
                                 <%= categoryList[i].category_name %>
                             </button>
                         </form>

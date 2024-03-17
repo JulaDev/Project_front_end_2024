@@ -9,9 +9,9 @@ connection.connect(()=>{
 
 let createUserTable = `CREATE TABLE IF NOT EXISTS user(
     uid int auto_increment primary key,
-    user_password varchar(20) not null,
     user_name varchar(30) not null,
-    isSeller boolean not null
+    user_password varchar(20) not null,
+    user_nickname varchar(20) not null
     );`
 
 let createItemTable = `CREATE TABLE IF NOT EXISTS product(
@@ -40,11 +40,16 @@ connection.query(createUserTable, (err, row)=>{
     if(err) throw err;
 
     console.log('USER TABLE IS CREATED IF THERE WAS NO TABLE');
+
 })
+
+
 connection.query(createCategoryTable, (err, row)=>{
     if(err) throw err;
 
     console.log('CATEGORY TABLE IS CREATED IF THERE WAS NO TABLE');
+
+
 })
 
 

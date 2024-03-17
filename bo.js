@@ -79,7 +79,7 @@ app.get('/editCategory',(req, res)=>{
 
 // POST UNDER =======================================
 
-db.query((`SELECT id FROM user`), (err, user)=>{
+db.query((`SELECT uid FROM user`), (err, user)=>{
     if(err) throw err;
 
     // make login algorithm
@@ -200,12 +200,20 @@ app.post('/updateItem', (req, res)=>{
     db.query(sqlOldDB, (err, row)=>{
 
 
+        // let updateName = `UPDATE product SET product_name = '${itemName}' WHERE product_name = '${row[0].product_name}';`
+        // let updateCategory = `UPDATE product SET product_category = '${category}' WHERE product_category = '${row[0].product_category}';`
+        // let updateDescription = `UPDATE product SET product_description = '${detail}' WHERE product_description = '${row[0].product_description}';`
+        // let updatePrice = `UPDATE product SET product_price = '${price}' WHERE product_price = '${row[0].product_price}';`
+        // let updateImage = `UPDATE product SET product_image = '${image}' WHERE product_image = '${row[0].product_image}';`
+        // let updatePromotion = `UPDATE product SET product_price_promotion = '${promotion}' WHERE product_price_promotion = '${row[0].product_price_promotion}';`
+
         let updateName = `UPDATE product SET product_name = '${itemName}' WHERE product_name = '${row[0].product_name}';`
         let updateCategory = `UPDATE product SET product_category = '${category}' WHERE product_category = '${row[0].product_category}';`
         let updateDescription = `UPDATE product SET product_description = '${detail}' WHERE product_description = '${row[0].product_description}';`
         let updatePrice = `UPDATE product SET product_price = '${price}' WHERE product_price = '${row[0].product_price}';`
         let updateImage = `UPDATE product SET product_image = '${image}' WHERE product_image = '${row[0].product_image}';`
         let updatePromotion = `UPDATE product SET product_price_promotion = '${promotion}' WHERE product_price_promotion = '${row[0].product_price_promotion}';`
+
 
 
         //input check
@@ -344,17 +352,41 @@ app.post('/removeCategory', (req, res)=>{
 
 app.post('/arrange', (req,res)=>{
 
+    let selected = req.body.select;
 
-    db.query((`SELECT * FROM product`), (err, row)=>{
-        if(err) throw err;
+    let sql = `SELECT * FROM product WHERE product_category = '${selected}'`
 
-        db.query(`SELECT * FROM category`,(err, categories)=>{
+    let selectAll = `SELECT * FROM product`
+
+    console.log(`SELECTED CATEGORY: ${selected}`)
+
+    if(selected === 'ALL'){
+
+        db.query(selectAll, (err, row)=>{
             if(err) throw err;
 
-            res.render('market',{ data: row , categoryList: categories });
+            db.query(`SELECT * FROM category`,(err, categories)=>{
+                if(err) throw err;
+
+                res.render('market',{ data: row , categoryList: categories });
+            })
+
         })
 
-    })
+    } else{
+        db.query(sql, (err, row)=>{
+            if(err) throw err;
+
+            db.query(`SELECT * FROM category`,(err, categories)=>{
+                if(err) throw err;
+
+                res.render('market',{ data: row , categoryList: categories });
+            })
+
+        })
+    }
+
+
 })
 
 
