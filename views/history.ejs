@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/categoryList.css"/>
     <link rel="stylesheet" href="css/market.css"/>
+    <link rel="stylesheet" href="css/history.css"/>
 </head>
 <body>
 
@@ -32,6 +33,9 @@
 <div class="hideNavText2 showHiddenBar">
     <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
 </div>
+<div class="hideNavText2 showHiddenBar" style="height: 50px;">
+    <a class=" showHiddenBar" href="/seller" style="font-weight:normal; height: 100%; background-color: #60b46e; color: white; padding-top: 2px; font-size: 2rem">BEST</a>
+</div>
 
 <div class="row" style="position: relative; left: 12px">
 
@@ -39,26 +43,28 @@
 
     <div class=" col-12 ">
 
-        <div class="cat-list-pst tp-margin " >
+        <div class="cat-list-pst " style="margin-top: 60px">
 
             <div style="display: flex">
-                <p class="hideCatTxt col-12 titleDeco" style="font-size: 2rem; font-weight: bold">BEST SALES</p>
+                <form style="width: 20vw" action="/seller" method="get" class="hideCatTxt bestSaleTag">
+                    <button type="submit" style="background-color: transparent; width: 100%; font-size: 2rem; border: none;border-bottom: solid 3px gray; margin-right: 4vw">BEST SALES</button>
+                </form>
 
-                <p class="hideCatTxt col-12 titleDeco" style="font-size: 2rem; font-weight: bold">SALES HISTORY</p>
+                <button class="hideCatTxt col-12 titleDeco" style="margin-left: 5% ; background-color: transparent; width: 20%; font-size: 2rem; border: none;border-bottom: solid 3px gray; margin-right: 4vw">SALES HISTORY</button>
 
 
             </div>
 
-            <div class="scroll-box" style="height: 70vh;  overflow: scroll; padding-right: 20px">
+            <div class="scroll-box-history">
 
-                <% for(let i = 0 ; i < 10 ; i ++){ %>
+                <% for(let i = 0 ; i < historyData.length ; i ++){ %>
 
                 <form action="" method="post">
-                    <button type="submit" style="background-color: white" class=" row outline list-box-lg list-box-md list-box-sm">
-                        <p class=" col-lg-4 col-md-4 col-sm-4 col-4" style="text-align: left; padding-left: 12px">ID: <%= i+1%></p>
+                    <button type="submit" style="background-color: white" class=" row outline list-box-lg list-box-md list-box-sm" name="selectedHistory" value="<%= historyData[i].bill_id%>">
+                        <p class=" col-lg-4 col-md-4 col-sm-4 col-4" style="text-align: left; padding-left: 12px"><%= historyData[i].bill_id%></p>
 
                         <div class=" col-lg-8 col-md-8 col-sm-8 col-8" >
-                            <div  style="text-transform: uppercase; text-align: right; width: 95%; padding-right: 5px" > DATE <%= i+1 %> </div>
+                            <div  style="text-transform: uppercase; text-align: right; width: 95%; padding-right: 5px" > <%= historyData[i].bill_date%> </div>
                         </div>
 
                     </button>

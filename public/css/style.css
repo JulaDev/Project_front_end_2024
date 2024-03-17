@@ -377,9 +377,9 @@
         height: 25px;
     }
 
-    .md-height{
-        height: 150vh;
-    }
+    /*.md-height{*/
+    /*    height: 150vh;*/
+    /*}*/
 
     .home-sub-title{
         color: #0f5132;
@@ -451,10 +451,10 @@
     }
 
     .systemPanel4{
-        height: 97%;
+        height: 90%;
         width:  100%;
         border: none;
-        border-radius: 60px;
+        border-radius: 90px;
         font-weight: bold;
         font-size: 1.7rem;
         color: white;

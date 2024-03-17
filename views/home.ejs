@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/market.css"/>
+    <link rel="stylesheet" href="css/controlHome.css"/>
 </head>
 <body>
 
@@ -36,7 +37,7 @@
     <div class="row" style="position: relative; left: 12px">
 
 <!--       SIDE LIST-->
-        <div class=" sideMenu sideMenuMIN col-xl-3 col-lg-3 col-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center">
+        <div class="hideHomeTitle sideMenu sideMenuMIN col-xl-3 col-lg-3 col-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center">
 <!--&lt;!&ndash;            use id to append child add more category&ndash;&gt;-->
 <!--             <div id="homeCategory">-->
 <!--                 <button class="navBlock navBlock-lg">HOME</button>-->
@@ -49,12 +50,17 @@
                 CONTROL
                 CENTER
             </div>
+
+        </div>
+        <div class="hideNavText2 showHiddenBar">
+            <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
         </div>
 
 
 <!--            CONTROL PANEL-->
         <div class="col-xl-9 col-lg-9 col-12 col-md-12 col-sm-12 col-xs-12" >
             <div class="row" style="margin: 10%; height: 30vw; position: relative; right: 5px">
+
                 <div class="p1small col-lg-6 col-md-12">
 <!--                    To make apply css both form and button should be applied.-->
                     <form action="/market" method="post" style="height: 95%">
@@ -62,21 +68,23 @@
                             MARKET
                         </button>
                     </form>
-
                 </div>
+
+
                 <div class="md-height p2small  col-lg-4  row col-md-12 ">
-                    <form class="col-lg-12 col-md-6 col-sm-6 col-6 hg-middleButtonHeight heightHund " action="/history" method="get" >
+                    <form class="col-lg-12 col-md-6 col-sm-6 col-6 hg-middleButtonHeight heightHund " action="/history" method="post" >
                         <button type="submit" id="history" class="p2Xsmall systemPanel2" name="history">
                             HISTORY
                         </button>
                     </form>
-
                     <form class="col-lg-12 col-md-6 col-sm-6 col-6 hg-middleButtonHeight heightHund" action="/category" method="post">
                         <button type="submit" class="p2Xsmall systemPanel3" name="category">
                             CATEGORY
                         </button>
                     </form>
                 </div>
+
+
                 <div class=" heightHund  col-lg-2 col-md-12">
                     <form class="systemPanel4 col-lg-12" action="/seller" method="get">
                         <button type="submit" class="systemPanel4 col-lg-1 heightHund" style="background: #ec992c;" name="seller">

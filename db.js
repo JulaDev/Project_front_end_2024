@@ -26,6 +26,13 @@ let createItemTable = `CREATE TABLE IF NOT EXISTS product(
     product_price_promotion varchar(50)
     );`
 
+let createHistoryTable = `CREATE TABLE IF NOT EXISTS history(
+    bill_id int auto_increment primary key,
+    bill_date varchar(30) not null,
+    bill_summary varchar(600) not null,
+    total_income decimal(15,2) not null
+    );`
+
 let createCategoryTable = `CREATE TABLE IF NOT EXISTS category(
     category_id int auto_increment primary key,
     category_name varchar(20) not null
@@ -40,6 +47,13 @@ connection.query(createUserTable, (err, row)=>{
     if(err) throw err;
 
     console.log('USER TABLE IS CREATED IF THERE WAS NO TABLE');
+
+})
+
+connection.query(createHistoryTable, (err, row)=>{
+    if(err) throw err;
+
+    console.log('HISTORY TABLE IS CREATED IF THERE WAS NO TABLE');
 
 })
 

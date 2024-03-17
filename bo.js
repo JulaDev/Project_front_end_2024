@@ -36,7 +36,8 @@ app.get('/market',(req, res)=>{
     })
 })
 app.get('/history',(req, res)=>{
-    res.render('history');
+
+    res.render('history',{CPdate: date});
 })
 app.get('/category',(req, res)=>{
     db.query(`SELECT * FROM category`, (err, row)=>{
@@ -98,9 +99,6 @@ app.post('/', (req, res)=>{
 app.post('/home', (req, res)=>{
 
 })
-app.post('/history', (req, res)=>{
-})
-
 
 app.post('/market', (req, res)=>{
 
@@ -349,7 +347,19 @@ app.post('/arrange', (req,res)=>{
 })
 
 app.post('/history', (req, res)=>{
-    res.redirect('/history')
+    const dateData = new Date();
+
+    let date = `${dateData.getFullYear()}. ${dateData.getMonth()+1}. ${dateData.getDate()}`
+
+    let sql = `SELECT * FROM history`
+
+    db.query(sql,(err, row)=>{
+        if(err) throw err;
+
+        res.render('./history.ejs', {historyData: row})
+
+    })
+
 })
 
 
