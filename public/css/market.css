@@ -14,7 +14,7 @@
 
     .categoryListPst{
         position: relative;
-        left: 7vw;
+        /*left: 7vw;*/
     }
 
     .sidePst{
@@ -52,7 +52,7 @@
 
     .categoryListPst{
         position: relative;
-        left: 7vw;
+        /*left: 7vw;*/
     }
 
 }
@@ -139,11 +139,15 @@
         height: 50px;
         margin-bottom: 10px;
         text-align: center;
-        background-color: transparent;
+        background-color: white;
         border: none;
         font-size: 1.5rem;
         color: white;
         font-weight: lighter;
+        padding-top: 1px;
+    }
+    .category_box:hover{
+        background-color: #9ec788;
     }
 
     .hiddenText{

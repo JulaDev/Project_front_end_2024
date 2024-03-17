@@ -1,54 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>History</title>
+    <title>HISTORY</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/categoryList.css"/>
     <link rel="stylesheet" href="css/market.css"/>
 </head>
 <body>
-    <form action="/history" method="post">
-        <!--NAV _BAR-->
-        <nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
-            <div class="container-fluid">
-                <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/home">SEASON GREEN</a>
-                <a class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/home">MARKET</a>
+
+<!--HOME _PAGE-->
+<!--NAV _BAR-->
+<nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
+    <div class="container-fluid">
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/home">SEASON GREEN</a>
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/home">HISTORY</a>
+    </div>
+</nav>
+
+<div class="hideNavText2 showHiddenBar">
+    <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
+</div>
+
+<div class="row" style="position: relative; left: 12px">
+
+
+
+    <div class=" col-12 ">
+
+        <div class="cat-list-pst tp-margin " >
+
+            <div style="display: flex">
+                <p class="hideCatTxt col-12 titleDeco" style="font-size: 2rem; font-weight: bold">BEST SALES</p>
+
+                <p class="hideCatTxt col-12 titleDeco" style="font-size: 2rem; font-weight: bold">SALES HISTORY</p>
+
+
             </div>
-        </nav>
 
-        <div class="hideNavText2 showHiddenBar">
-            <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
+            <div class="scroll-box" style="height: 70vh;  overflow: scroll; padding-right: 20px">
+
+                <% for(let i = 0 ; i < 10 ; i ++){ %>
+
+                <form action="" method="post">
+                    <button type="submit" style="background-color: white" class=" row outline list-box-lg list-box-md list-box-sm">
+                        <p class=" col-lg-4 col-md-4 col-sm-4 col-4" style="text-align: left; padding-left: 12px">ID: <%= i+1%></p>
+
+                        <div class=" col-lg-8 col-md-8 col-sm-8 col-8" >
+                            <div  style="text-transform: uppercase; text-align: right; width: 95%; padding-right: 5px" > DATE <%= i+1 %> </div>
+                        </div>
+
+                    </button>
+                </form>
+
+                <% } %>
+            </div>
         </div>
-
-    <div class="row outline" style="height: 93.5vh">
-        <div class="col-md-3 outline">
-                TEST box LEFT
-        </div>
-
-        <div class="col-md-8 outline">
-                TEST box RIGHT
-        </div>
-
     </div>
 
-
-
-
-    </form>
-
-
-
+</div>
 
 </body>
 </html>

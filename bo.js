@@ -36,7 +36,7 @@ app.get('/market',(req, res)=>{
     })
 })
 app.get('/history',(req, res)=>{
-    res.render('./history.ejs');
+    res.render('history');
 })
 app.get('/category',(req, res)=>{
     db.query(`SELECT * FROM category`, (err, row)=>{
@@ -308,14 +308,7 @@ app.post('/removeCategory', (req, res)=>{
     })
 
     res.redirect('/category')
-
-
-
 })
-
-
-
-
 
 app.post('/arrange', (req,res)=>{
 
@@ -353,7 +346,10 @@ app.post('/arrange', (req,res)=>{
         })
     }
 
+})
 
+app.post('/history', (req, res)=>{
+    res.redirect('/history')
 })
 
 
