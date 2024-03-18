@@ -1,6 +1,27 @@
 
 @media  screen and (max-width: 3000px){
 
+    .categoryBtn{
+        text-align: center;
+        font-weight: normal;
+        font-size: 2.5rem;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: solid 4px gray;
+        margin-bottom: 5%;
+    }
+
+    .categoryListPst{
+        position: relative;
+        /*left: 7vw;*/
+    }
+
+    .sidePst{
+        position: relative;
+        top: 70px
+    }
+
     .pst-M{
         position: relative;
         left: 6.5vw
@@ -27,6 +48,11 @@
     .pst-M{
         position: relative;
         left: 6vw
+    }
+
+    .categoryListPst{
+        position: relative;
+        /*left: 7vw;*/
     }
 
 }
@@ -79,6 +105,15 @@
 
 }
 
+@media  screen and (max-width: 993px){
+
+    .hideHomeTitle{
+        display: none;
+    }
+
+
+}
+
 @media  screen and (max-width: 900px){
     .hideAddItemBTN{
         display: none;
@@ -106,11 +141,6 @@
 
     }
 
-    .market-cat{
-        padding-top: 7px;
-        display: flex;
-        font-weight: bold;
-    }
 
     .category_box{
         margin-left: 0.1px;
@@ -118,11 +148,15 @@
         height: 50px;
         margin-bottom: 10px;
         text-align: center;
-        background-color: transparent;
+        background-color: white;
         border: none;
         font-size: 1.5rem;
         color: white;
         font-weight: lighter;
+        padding-top: 1px;
+    }
+    .category_box:hover{
+        background-color: #9ec788;
     }
 
     .hiddenText{
