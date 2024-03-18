@@ -21,11 +21,29 @@ app.get('/', function(req, res) {
     res.render('login');
 });
 
-// app.get('/list', async function(req, res) {
-//     const productNames = await itemlist.getProductItems();
-//     res.render('list', { listTitle: "product", items: productNames });
-// });
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
 
+    // if (email === 'example@example.com' && password === 'password') {
+    //     res.redirect('/homepage');
+    // } else {
+    //     res.render('login', { error: 'Invalid email or password' });
+    // }
+
+    res.redirect('/homepage');
+});
+
+app.get('/register', (req, res) => {
+    res.render('register'); // Render the register.ejs file
+});
+
+app.get('/homepage', (req, res) => {
+    res.render('homepage'); // Render the homepage.ejs file
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact'); // Render the homepage.ejs file
+});
 
 app.get('/list', async function(req, res) {
     const page = req.query.page ? parseInt(req.query.page) : 1;
