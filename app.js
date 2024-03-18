@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 // GET UNDER =======================================
 
-app.get('/', (req, res)=>{
+app.get('/centreLogin', (req, res)=>{
     res.render('./login.ejs');
 })
 
