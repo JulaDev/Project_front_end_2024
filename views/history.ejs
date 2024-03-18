@@ -25,13 +25,13 @@
 <!--NAV _BAR-->
 <nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
     <div class="container-fluid">
-        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/home">SEASON GREEN</a>
-        <a class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/home">HISTORY</a>
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/centreHome">SEASON GREEN</a>
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/centreHome">HISTORY</a>
     </div>
 </nav>
 
 <div class="hideNavText2 showHiddenBar">
-    <a class=" showHiddenBar" href="/home">CONTROL CENTER</a>
+    <a class=" showHiddenBar" href="/centreHome">CONTROL CENTER</a>
 </div>
 <div class="hideNavText2 showHiddenBar" style="height: 50px;">
     <a class=" showHiddenBar" href="/seller" style="font-weight:normal; height: 100%; background-color: #60b46e; color: white; padding-top: 2px; font-size: 2rem">BEST</a>
@@ -59,7 +59,7 @@
 
                 <% for(let i = 0 ; i < historyData.length ; i ++){ %>
 
-                <form action="" method="post">
+                <form action="/historyDetail" method="post">
                     <button type="submit" style="background-color: white" class=" row outline list-box-lg list-box-md list-box-sm" name="selectedHistory" value="<%= historyData[i].bill_id%>">
                         <p class=" col-lg-4 col-md-4 col-sm-4 col-4" style="text-align: left; padding-left: 12px"><%= historyData[i].bill_id%></p>
 

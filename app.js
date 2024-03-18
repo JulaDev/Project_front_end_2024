@@ -19,7 +19,7 @@ app.get('/centreLogin', (req, res)=>{
     res.render('./login.ejs');
 })
 
-app.get('/home', (req, res)=>{
+app.get('/centreHome', (req, res)=>{
     res.render('./home.ejs');
 })
 
@@ -77,8 +77,18 @@ app.get('/editCategory',(req, res)=>{
 })
 
 
+app.get('/historyDetail',(req,res)=>{
+    res.render('./historyDetail.ejs')
+})
+
+
 
 // POST UNDER =======================================
+// POST UNDER =======================================
+// POST UNDER =======================================
+// POST UNDER =======================================
+// POST UNDER =======================================
+
 
 db.query((`SELECT uid FROM user`), (err, user)=>{
     if(err) throw err;
@@ -358,6 +368,19 @@ app.post('/history', (req, res)=>{
 
         res.render('./history.ejs', {historyData: row})
 
+    })
+
+})
+
+app.post('/historyDetail',(req, res)=>{
+
+    let selected = req.body.selectedHistory;
+
+    let selectSql = `SELECT * FROM history WHERE bill_id = ${selected}`
+
+    db.query(selectSql, (err, row)=>{
+        if(err) throw err;
+        res.render('historyDetail', {selectedHistory: row})
     })
 
 })

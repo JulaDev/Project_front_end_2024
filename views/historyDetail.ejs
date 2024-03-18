@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Category</title>
+    <title>History Detail</title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,16 +17,23 @@
 
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/style2.css"/>
+    <link rel="stylesheet" href="css/market.css"/>
+    <link rel="stylesheet" href="css/categoryList.css"/>
 </head>
 <body>
 
 <!--HOME _PAGE-->
 <!--NAV _BAR-->
-<nav class="homeTitle-min navColor" style="height: 60px; padding-top: 6px">
+<nav class="homeTitle-min navColor nav-height" style="padding-top: 6px">
     <div class="container-fluid">
-        <a class="homeTitle-mg navbar-brand navbarX" href="/centreHome">SEASON GREEN</a>
+        <a class="homeTitle-mg navbar-brand navbarX hideNavText" href="/centreHome">SEASON GREEN</a>
+        <a style="font-weight: normal;" class="homeTitle-mg navbar-brand navbarX hideNavText2 showText2" href="/centreHome">HISTORY DETAIL</a>
     </div>
 </nav>
+
+<div class="hideNavText2 showHiddenBar">
+    <a style="font-weight: normal" class=" showHiddenBar" href="/centreHome">CONTROL CENTER</a>
+</div>
 
 <div class="row" style="position: relative; left: 12px">
     <div class="row " style="height: 80vh;">
@@ -35,31 +42,22 @@
         <div>
 
 
-            <div class="topText mrg-tp" style="display: flex">
-                <p  style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray">EDIT CATEGORY</p>
+            <div class="historyTxtMrg" style="display: flex">
+                <p  style="font-size: 2rem; font-weight: normal; border-bottom: solid 3px gray">DETAIL</p>
 
             </div>
 
-            <div class=" outBox" style="height: 20vh;">
+            <div class= "historyBox" style="height: 100vh">
 
+                    <div class=" outline" style="height: 80vh ;width: 100%; padding-bottom: 10%; border: solid 2px; border-color: #8899ab">
+                        <div>BILL ID: <%= selectedHistory[0].bill_id%></div>
 
+                        <div>BILL DATE: <%= selectedHistory[0].bill_date%></div>
 
-                <form action="/updateCategory" method="post">
+                        <div>NUMBER OF ITEMS: </div>
 
-
-                    <div class=" outline" style="height: 15vh ;width: 100%; padding-bottom: 10%; border: solid 2px; border-color: #8899ab">
-                        <label class="inputBox1">
-                            <p class="toCenter">CATEGORY NAME:</p>  <input class="inputBox2" type="text" name="categoryName" placeholder="<%= data%>" required>
-                        </label>
+                        <div>TOTAL INCOME: <%= selectedHistory[0].total_income%></div>
                     </div>
-
-                    <button type="submit"  class="confirmBtn pst1" name="oldName" value="<%= data%>">CONFIRM</button>
-                </form>
-
-
-                <form action="/category" method="post">
-                    <button type="submit"  class="cancelBtn pst2">CANCEL</button>
-                </form>
 
 
             </div>
@@ -71,7 +69,6 @@
 
 </div>
 
-<div class="circle-bg outline"></div>
 
 </body>
 </html>
