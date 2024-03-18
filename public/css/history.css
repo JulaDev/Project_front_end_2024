@@ -2,7 +2,37 @@
     margin-top: 3%;
     height: 70vh;
     overflow: scroll;
+}
 
+.bestSaleTag{
+    width: 40vw;
+    background: transparent;
+}
+
+.inTxtAdj{
+    padding-left: 1vw;
+}
+
+.inTxtAdj1{
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.inTxtAdj2{
+
+}
+
+.inTxtPst{
+
+}
+
+.inTxtLSTPst{
+    margin-top: 60vh;
+    padding-top: 1vh;
+    text-align: right;
+    border-top: solid 3px #bdbbbb;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 @media  screen and (max-width: 3000px){
@@ -10,17 +40,23 @@
 
 }
 
-@media screen and(max-width: 2500px) {
+@media screen and(max-width: 2300px) {
     .bestSaleTag{
         width: 40vw;
         background: transparent;
     }
-}
 
+    .inTxtAdj{
+        padding-left: 2vw;
+    }
 
+    .inTxtPst{
 
-@media  screen and (max-width: 2500px){
+    }
 
+    .inTxtLSTPst{
+
+    }
 
 }
 

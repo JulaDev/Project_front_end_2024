@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="css/style2.css"/>
     <link rel="stylesheet" href="css/market.css"/>
     <link rel="stylesheet" href="css/categoryList.css"/>
+    <link rel="stylesheet" href="css/history.css"/>
+
 </head>
 <body>
 
@@ -47,18 +49,15 @@
 
             </div>
 
-            <div class= "historyBox" style="height: 100vh">
+            <div class= "historyBox">
 
-                    <div class=" outline" style="height: 80vh ;width: 100%; padding-bottom: 10%; border: solid 2px; border-color: #8899ab">
-                        <div>BILL ID: <%= selectedHistory[0].bill_id%></div>
+                        <div class="inTxtAdj inTxtAdj1">BILL ID: <%= selectedHistory[0].bill_id%></div>
 
-                        <div>BILL DATE: <%= selectedHistory[0].bill_date%></div>
+                        <div class="inTxtAdj inTxtAdj2 inTxtPst">BILL DATE: <%= selectedHistory[0].bill_date%></div>
 
-                        <div>NUMBER OF ITEMS: </div>
+                        <div class="inTxtAdj inTxtPst">NUMBER OF ITEMS: <%= product[0].product_sales_count%></div>
 
-                        <div>TOTAL INCOME: <%= selectedHistory[0].total_income%></div>
-                    </div>
-
+                        <div class="inTxtLSTPst">TOTAL INCOME: <%= selectedHistory[0].total_income%></div>
 
             </div>
         </div>
