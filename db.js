@@ -80,7 +80,9 @@ connection.query('SELECT 1 + 1 AS solution',(error, results, fields)=>{
 })
 
 
-
-
-
 module.exports = connection;
+
+
+
+const pool = mysql.createPool(token);
+module.exports = pool.promise(); 

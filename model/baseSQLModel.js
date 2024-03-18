@@ -1,5 +1,5 @@
 //baseSQLModel.js
-const pool = require('../config/db'); 
+const pool = require('../db'); 
 
 class BaseSQLModel {
   constructor(tableName) {
