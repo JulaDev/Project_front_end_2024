@@ -28,6 +28,7 @@ let createItemTable = `CREATE TABLE IF NOT EXISTS product(
 
 let createHistoryTable = `CREATE TABLE IF NOT EXISTS history(
     bill_id int auto_increment primary key,
+    bill_item_id varchar(40) not null,
     bill_date varchar(30) not null,
     bill_summary varchar(600) not null,
     total_income decimal(15,2) not null
