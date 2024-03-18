@@ -26,12 +26,9 @@ app.get('/centreHome', (req, res)=>{
 app.get('/market',(req, res)=>{
     db.query((`SELECT * FROM product`), (err, row)=>{
         if(err) throw err;
-
         db.query(`SELECT * FROM category`,(err, categories)=>{
             if(err) throw err;
-
             res.render('market',{ data: row , categoryList: categories });
-
         })
     })
 })
@@ -42,7 +39,6 @@ app.get('/history',(req, res)=>{
 app.get('/category',(req, res)=>{
     db.query(`SELECT * FROM category`, (err, row)=>{
         if(err) throw err;
-
         res.render('category',{ categoryList: row });
     })
 })
@@ -56,10 +52,8 @@ app.get('/addItem',(req,res)=>{
 
     db.query(sql, (err, row)=>{
         if(err) throw err;
-
         res.render('./addItem.ejs', {category: row});
     })
-
 
 })
 
@@ -81,14 +75,11 @@ app.get('/historyDetail',(req,res)=>{
     res.render('./historyDetail.ejs')
 })
 
-
-
 // POST UNDER =======================================
 // POST UNDER =======================================
 // POST UNDER =======================================
 // POST UNDER =======================================
 // POST UNDER =======================================
-
 
 db.query((`SELECT uid FROM user`), (err, user)=>{
     if(err) throw err;
@@ -97,12 +88,8 @@ db.query((`SELECT uid FROM user`), (err, user)=>{
 
 })
 
-
-
 app.post('/', (req, res)=>{
-
     res.redirect('/home')
-
 })
 
 
@@ -111,38 +98,26 @@ app.post('/home', (req, res)=>{
 })
 
 app.post('/market', (req, res)=>{
-
     db.query((`SELECT * FROM product`), (err, row)=>{
         if(err) throw err;
-
         db.query(`SELECT * FROM category`,(err, categories)=>{
             if(err) throw err;
-
             res.render('market',{ data: row , categoryList: categories });
         })
-
     })
-
 })
 
 app.post('/category', (req, res)=>{
-
-
         db.query(`SELECT * FROM category`,(err, category)=>{
             if(err) throw err;
 
             res.render('category',{ categoryList: category });
         })
-
-
 })
-
 
 app.post('/addItem', (req, res)=>{
     const dateData = new Date();
-
     let date = `${dateData.getFullYear()}. ${dateData.getMonth()+1}. ${dateData.getDate()}`
-
     let itemName = req.body.itemName;
     let category = req.body.itemCategory;
     let detail = req.body.itemDetail;
@@ -163,9 +138,6 @@ app.post('/addItem', (req, res)=>{
     })
 
     res.redirect('/market')
-
-
-
 })
 
 app.post('/editItem', (req, res)=>{
@@ -174,24 +146,16 @@ app.post('/editItem', (req, res)=>{
 
     db.query(sql, (err, row)=>{
         if(err) throw err;
-
         let sqlFetch = `SELECT * FROM product WHERE product_id = ${data};`
 
         db.query(sqlFetch, (err, OD)=>{
             if(err) throw err;
-
             console.log('DATA QUEUE  FOR REPLACEMENT: '+ OD[0].product_name)
-
             res.render('./editItem.ejs', {category: row, readyData: OD});
 
         })
     })
-
-
-
-
 })
-
 
 app.post('/updateItem', (req, res)=>{
     let dataRow = req.body.selectedData;
@@ -227,37 +191,25 @@ app.post('/updateItem', (req, res)=>{
 
 })
 
-
-
-
 app.post('/removeItem', (req, res)=>{
 
     let rm = req.body.removeItem;
 
     db.query(`DELETE FROM product WHERE product_id = ${rm};`,(err, category)=>{
         if(err) throw err;
-
         console.log(`Selected Item ID: ${rm} REMOVED`)
-
     })
-
     res.redirect('/market')
-
     console.log(`Selected ITEM: ${rm}`)
 })
-
-
 
 app.post('/addCategory', (req, res)=>{
 
     let category = req.body.categoryName;
-
     let sql = `INSERT INTO category(category_name) VALUES('${category}');`
-
 
         db.query(sql,(err, categories)=>{
             if(err) throw err;
-
             console.log(`Added Category: ${category}`);
 
             for(let i = 0; i < categories.length; i++){
@@ -265,10 +217,7 @@ app.post('/addCategory', (req, res)=>{
             }
 
         })
-
         res.redirect('/category')
-
-
 })
 
 app.post('/editCategory',(req, res)=>{
@@ -276,7 +225,6 @@ app.post('/editCategory',(req, res)=>{
     let readyData = req.body.categoryEdit;
 
     console.log(`SELECTED DATA TO UPDATE: ${readyData}`)
-
     res.render('./editCategory.ejs', {data: readyData})
 })
 
@@ -286,106 +234,87 @@ app.post('/updateCategory',(req, res)=>{
 
     const oldData = req.body.oldName;
     const newData = req.body.categoryName;
-
     console.log('Old DATA: '+oldData);
-
     const sql = `UPDATE category SET category_name = '${newData}' WHERE category_name = '${oldData}'`
 
     db.query(sql, (err, data)=>{
         if(err) throw err;
-
         console.log("Data has been updated!")
-
     })
-
     res.redirect('/category')
-
 })
 
 
 app.post('/removeCategory', (req, res)=>{
 
     let rm = req.body.removeCategory;
-
-
     db.query(`DELETE FROM category WHERE category_id = ${rm};`,(err, category)=>{
         if(err) throw err;
-
         console.log(`Selected Category ID: ${rm} REMOVED`)
-
     })
-
     res.redirect('/category')
 })
 
 app.post('/arrange', (req,res)=>{
 
     let selected = req.body.select;
-
     let sql = `SELECT * FROM product WHERE product_category = '${selected}'`
-
     let selectAll = `SELECT * FROM product`
 
     console.log(`SELECTED CATEGORY: ${selected}`)
 
     if(selected === 'ALL'){
-
         db.query(selectAll, (err, row)=>{
             if(err) throw err;
 
             db.query(`SELECT * FROM category`,(err, categories)=>{
                 if(err) throw err;
-
                 res.render('market',{ data: row , categoryList: categories });
             })
-
         })
-
     } else{
         db.query(sql, (err, row)=>{
             if(err) throw err;
 
             db.query(`SELECT * FROM category`,(err, categories)=>{
                 if(err) throw err;
-
                 res.render('market',{ data: row , categoryList: categories });
             })
-
         })
     }
-
 })
 
 app.post('/history', (req, res)=>{
     const dateData = new Date();
 
     let date = `${dateData.getFullYear()}. ${dateData.getMonth()+1}. ${dateData.getDate()}`
-
     let sql = `SELECT * FROM history`
 
     db.query(sql,(err, row)=>{
         if(err) throw err;
-
         res.render('./history.ejs', {historyData: row})
-
     })
-
 })
 
 app.post('/historyDetail',(req, res)=>{
 
     let selected = req.body.selectedHistory;
-
     let selectSql = `SELECT * FROM history WHERE bill_id = ${selected}`
 
+
     db.query(selectSql, (err, row)=>{
-        if(err) throw err;
-        res.render('historyDetail', {selectedHistory: row})
+
+        let selectProduct = `SELECT * FROM product WHERE product_id = ${row[0].bill_id}`
+
+        db.query(selectProduct, (err, product)=>{
+            if(err) throw err;
+
+            console.log(`THIS is for CHECKING PRODUCT COUNT: ${product[0].product_sales_count}`)
+            res.render('historyDetail', {selectedHistory: row, product: product})
+        })
+
     })
-
 })
-
-
 
 
 app.listen(port, ()=>{
