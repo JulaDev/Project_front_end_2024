@@ -1,0 +1,106 @@
+.homeProfile{
+    border: solid 2px #66A646CE;
+    border-radius: 60px;
+    height: 55px;
+    width:  55px;
+}
+
+.homeProfileInner{
+    border: solid 2px #66A646CE;
+    border-radius: 60px;
+    margin: auto;
+    height: 45px;
+    width:  45px;
+}
+
+.homeIcon{
+    background-color: #eefff6;
+    width: 100%;
+    height: 100%;
+    border-radius: 45px;
+}
+
+
+@media screen and (max-width: 2500px) {
+
+    .profilePst{
+        display: flex;
+        position: relative;
+        bottom: 38px;
+        left: 92vw;
+    }
+
+    .logoutBtn{
+        text-decoration: none;
+        color: white;
+        position: relative;
+        bottom: 65px;
+        left: 91.5vw;
+    }
+
+}
+
+@media screen and (max-width: 1600px) {
+
+    .profilePst{
+        position: relative;
+        bottom: 40px;
+        left: 88vw;
+    }
+
+    .logoutBtn{
+        text-decoration: none;
+        color: white;
+        position: relative;
+        bottom: 70px;
+        left: 87.5vw;
+    }
+
+}
+
+@media screen and (max-width: 1100px) {
+
+    .profilePst{
+        position: relative;
+        bottom: 40px;
+        left: 87vw;
+    }
+
+    .logoutBtn{
+        text-decoration: none;
+        color: white;
+        position: relative;
+        bottom: 70px;
+        left: 86.5vw;
+    }
+
+}
+
+@media screen and (max-width: 1050px) {
+
+    .profilePst{
+        position: relative;
+        bottom: 40px;
+        left: 84vw;
+    }
+    .logoutBtn{
+        text-decoration: none;
+        color: white;
+        position: relative;
+        bottom: 70px;
+        left: 83vw;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .profilePst{
+        display: none;
+    }
+
+    .logoutBtn{
+        display: none;
+    }
+
+}
