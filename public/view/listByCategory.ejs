@@ -56,7 +56,18 @@
                         </div>
                         <div class="">
                             <p><%= item.product_price %></p>
-                            <button>add</button>
+
+                            <!-- link to productpage.ejs -->
+                            <!-- <a href="/product/<%= item.id %>">
+                                <button>Add</button>
+                            </a> -->
+
+                            <form action="/addToCart" method="POST">
+                                <input type="hidden" name="productId" value="<%= item.product_id %>">
+                                <input type="hidden" name="productName" value="<%= item.product_name %>">
+                                <input type="hidden" name="productPrice" value="<%= item.product_price %>">
+                                <button type="submit">Add</button>
+                            </form>
                         </div>
                     </div>
                     
