@@ -1,8 +1,10 @@
 //app.js
 const express = require('express');
+const session = require('express-session')
 const bodyParser = require('body-parser');
 const db = require("./db");
 const {query} = require("express");
+
 
 const app = express();
 app.set("view engine", "ejs");
@@ -12,6 +14,8 @@ app.use(express.static('public'));
 app.use(express.static("views"));
 
 const port = 3001;
+
+let loginSTATUS = false;
 
 app.set('view engine', 'ejs');
 
@@ -83,15 +87,41 @@ app.get('/historyDetail',(req,res)=>{
 // POST UNDER =======================================
 // POST UNDER =======================================
 
-db.query((`SELECT uid FROM user`), (err, user)=>{
-    if(err) throw err;
 
-    // make login algorithm
+app.post('/centreLogin', (req, res)=>{
 
-})
+    const username = req.body.username;
+    const password = req.body.password;
 
-app.post('/', (req, res)=>{
-    res.redirect('/home')
+    console.log(`INPUT ID: ${username}`);
+    console.log(`INPUT PW: ${password}`);
+
+    let loginSql = `SELECT * FROM user WHERE user_name  = '${username}'`
+
+    db.query(loginSql, (err, row)=>{
+        // if(err) throw err;
+
+        console.log("SEARCHED ID: "+ row[0].user_name)
+
+        if(row[0].user_password === password){
+            loginSTATUS = true;
+            console.log("LOGIN SUCCESS :: STAUTS-200")
+            console.log("LOGIN STATUS: "+ loginSTATUS)
+
+            res.redirect('/centreHome')
+
+        }
+
+        if(err){
+            res.redirect('/centreLogin')
+            console.log("Login Failure :: STATUS-500");
+            alert("INCORRECT username or password.")
+            throw err;
+        }
+
+
+    })
+
 })
 
 
