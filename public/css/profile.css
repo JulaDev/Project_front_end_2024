@@ -23,6 +23,7 @@
 @media screen and (max-width: 3000px) {
 
     .profilePst{
+        width: 150px;
         display: flex;
         position: relative;
         bottom: 38px;
