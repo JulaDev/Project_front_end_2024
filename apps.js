@@ -110,6 +110,39 @@ app.get('/promotion', async function(req, res) {
     }
 });
 
+app.get('/product/:itemId', async function(req, res) {
+    try {
+        const itemId = req.params.itemId;
+        // Retrieve the item details based on the itemId
+        const item = await itemlist.getItemById(itemId); // Define this function in your itemlist module
+        if (item) {
+            res.render('productpage', { item: item });
+        } else {
+            // Handle case where item with the specified ID is not found
+            res.status(404).send("Item not found");
+        }
+    } catch(error) {
+        console.error("Error fetching item details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+// Define a global variable to store cart items
+let cartItems = [];
+
+// Route to add an item to the cart
+app.post('/addToCart', (req, res) => {
+    const { productId, productName, productPrice } = req.body;
+    // Add the item to the cart
+    cartItems.push({ id: productId, name: productName, price: productPrice });
+    res.redirect('/cart');
+});
+
+// Route to display the cart page
+app.get('/cart', (req, res) => {
+    res.render('cart', { cartItems });
+});
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
