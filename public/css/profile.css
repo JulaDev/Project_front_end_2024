@@ -31,7 +31,8 @@
     }
 
     .logoutBtn{
-        text-decoration: none;
+        background: transparent;
+        border: none;
         color: white;
         position: relative;
         bottom: 65px;
@@ -50,7 +51,8 @@
     }
 
     .logoutBtn{
-        text-decoration: none;
+        background: transparent;
+        border: none;
         color: white;
         position: relative;
         bottom: 65px;
@@ -68,7 +70,8 @@
     }
 
     .logoutBtn{
-        text-decoration: none;
+        background: transparent;
+        border: none;
         color: white;
         position: relative;
         bottom: 70px;
@@ -86,7 +89,8 @@
     }
 
     .logoutBtn{
-        text-decoration: none;
+        background: transparent;
+        border: none;
         color: white;
         position: relative;
         bottom: 70px;
@@ -103,7 +107,8 @@
         left: 84vw;
     }
     .logoutBtn{
-        text-decoration: none;
+        background: transparent;
+        border: none;
         color: white;
         position: relative;
         bottom: 70px;
