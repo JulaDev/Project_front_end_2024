@@ -20,6 +20,24 @@
     border-radius: 45px;
 }
 
+@media screen and (max-width: 3000px) {
+
+    .profilePst{
+        display: flex;
+        position: relative;
+        bottom: 38px;
+        left: 92vw;
+    }
+
+    .logoutBtn{
+        text-decoration: none;
+        color: white;
+        position: relative;
+        bottom: 65px;
+        left: 91.5vw;
+    }
+
+}
 
 @media screen and (max-width: 2500px) {
 
