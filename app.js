@@ -17,6 +17,14 @@ const port = 3001;
 
 let loginSTATUS = false;
 
+let loginUID = 0;
+
+
+function logOut(){
+    loginSTATUS = false;
+    console.log("LOGIN STATUS: "+ loginSTATUS)
+}
+
 app.set('view engine', 'ejs');
 
 // GET UNDER =======================================
@@ -99,29 +107,40 @@ app.post('/centreLogin', (req, res)=>{
     let loginSql = `SELECT * FROM user WHERE user_name  = '${username}'`
 
     db.query(loginSql, (err, row)=>{
-        // if(err) throw err;
 
-        console.log("SEARCHED ID: "+ row[0].user_name)
+        // if(err){
+        //     throw err;
+        // }
 
-        if(row[0].user_password === password){
-            loginSTATUS = true;
-            console.log("LOGIN SUCCESS :: STAUTS-200")
+        try{
+            if(row[0].user_name === username && row[0].user_password === password){
+                console.log("SEARCHED ID: "+ row[0].user_name)
+
+                loginSTATUS = true;
+                console.log("LOGIN SUCCESS :: STAUTS-200")
+                console.log("LOGIN STATUS: "+ loginSTATUS)
+                console.log("LOGIN UID: "+ row[0].uid)
+
+                res.render('home',{username: row[0].nickname, uid:row[0].uid});
+
+            }
+        } catch (err){
+            console.log("LOGIN FAILURE :: STAUTS-500")
             console.log("LOGIN STATUS: "+ loginSTATUS)
-
-            res.redirect('/centreHome')
-
-        }
-
-        if(err){
-            res.redirect('/centreLogin')
-            console.log("Login Failure :: STATUS-500");
-            alert("INCORRECT username or password.")
-            throw err;
+            // res.write(`<script>alert('INCORRECT username OR password')</script>`)
+            res.render('login');
+            // throw err;
         }
 
 
     })
 
+})
+
+app.post('/logOut',(req, res)=>{
+    loginSTATUS = false;
+    console.log("LOGIN STATUS: "+ loginSTATUS)
+    res.redirect('/centreLogin')
 })
 
 
