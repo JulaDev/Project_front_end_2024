@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
-const db = require("./config/db.js");
+const db = require("./db.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -21,11 +21,29 @@ app.get('/', function(req, res) {
     res.render('login');
 });
 
-// app.get('/list', async function(req, res) {
-//     const productNames = await itemlist.getProductItems();
-//     res.render('list', { listTitle: "product", items: productNames });
-// });
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
 
+    // if (email === 'example@example.com' && password === 'password') {
+    //     res.redirect('/homepage');
+    // } else {
+    //     res.render('login', { error: 'Invalid email or password' });
+    // }
+
+    res.redirect('/homepage');
+});
+
+app.get('/register', (req, res) => {
+    res.render('register'); // Render the register.ejs file
+});
+
+app.get('/homepage', (req, res) => {
+    res.render('homepage'); // Render the homepage.ejs file
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact'); // Render the homepage.ejs file
+});
 
 app.get('/list', async function(req, res) {
     const page = req.query.page ? parseInt(req.query.page) : 1;
@@ -40,9 +58,6 @@ app.get('/list', async function(req, res) {
         const totalItems = await itemlist.getTotalProductItemsCount();
         const totalPages = Math.ceil(totalItems / pageSize);
 
-        console.log(`Total Items: ${totalItems}, Total Pages: ${totalPages}`);
-        console.log("Items Fetched:", product);
-
         res.render('list', { 
             listTitle: "Product", 
             items: product,
@@ -55,64 +70,78 @@ app.get('/list', async function(req, res) {
     }
 });
 
-app.get('/list/snack', async function(req, res) {
+app.get('/snack', async function(req, res) {
     try {
-        const snackItems = await itemlist.findByColumn('category', 'Snack');
-        res.render('listByCategory', { listTitle: "Snack", items: snackItems });
+        const snackItems = await itemlist.findByColumn('product_category', 'Snack & Dessert');
+        res.render('listByCategory', { listTitle: "Snack & Dessert", items: snackItems });
     } catch(error) {
         console.error("Error fetching snack items:", error);
         res.status(500).send("Internal Server Error");
     }
 });
 
-app.get('/list/dessert', async function(req, res) {
+app.get('/meat', async function(req, res) {
     try {
-        const dessertItems = await itemlist.findByColumn('category', 'Dessert');
-        res.render('listByCategory', { listTitle: "Dessert", items: dessertItems });
-    } catch(error) {
-        console.error("Error fetching dessert items:", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
-
-app.get('/list/meat', async function(req, res) {
-    try {
-        const meatItems = await itemlist.findByColumn('category', 'Meat');
-        res.render('listByCategory', { listTitle: "Meat", items: meatItems });
+        const meatItems = await itemlist.findByColumn('product_category', 'Meat & Seafood');
+        res.render('listByCategory', { listTitle: "Meat & Seafood", items: meatItems });
     } catch(error) {
         console.error("Error fetching meat items:", error);
         res.status(500).send("Internal Server Error");
     }
 });
 
-app.get('/list/seafood', async function(req, res) {
+app.get('/fruit', async function(req, res) {
     try {
-        const seafoodItems = await itemlist.findByColumn('category', 'Seafood');
-        res.render('listByCategory', { listTitle: "Seafood", items: seafoodItems });
-    } catch(error) {
-        console.error("Error fetching seafood items:", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
-
-app.get('/list/fruit', async function(req, res) {
-    try {
-        const fruitItems = await itemlist.findByColumn('category', 'Fruit');
-        res.render('listByCategory', { listTitle: "Fruit", items: fruitItems });
+        const fruitItems = await itemlist.findByColumn('product_category', 'Fruit & Vegetable');
+        res.render('listByCategory', { listTitle: "Fruit & Vegetable", items: fruitItems });
     } catch(error) {
         console.error("Error fetching fruit items:", error);
         res.status(500).send("Internal Server Error");
     }
 });
 
-app.get('/list/vegetable', async function(req, res) {
+app.get('/promotion', async function(req, res) {
     try {
-        const vegetableItems = await itemlist.findByColumn('category', 'Vegetable');
-        res.render('listByCategory', { listTitle: "Vegetable", items: vegetableItems });
+        const promotion = await itemlist.executeQuery('SELECT * FROM product WHERE product_price_promotion IS NOT NULL');
+        res.render('listByCategory', { listTitle: "Promotion", items: promotion });
     } catch(error) {
-        console.error("Error fetching vegetable items:", error);
+        console.error("Error fetching fruit items:", error);
         res.status(500).send("Internal Server Error");
     }
+});
+
+app.get('/product/:itemId', async function(req, res) {
+    try {
+        const itemId = req.params.itemId;
+        // Retrieve the item details based on the itemId
+        const item = await itemlist.getItemById(itemId); // Define this function in your itemlist module
+        if (item) {
+            res.render('productpage', { item: item });
+        } else {
+            // Handle case where item with the specified ID is not found
+            res.status(404).send("Item not found");
+        }
+    } catch(error) {
+        console.error("Error fetching item details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+// Define a global variable to store cart items
+let cartItems = [];
+
+// Route to add an item to the cart
+app.post('/addToCart', (req, res) => {
+    const { productId, productName, productPrice } = req.body;
+    // Add the item to the cart
+    cartItems.push({ id: productId, name: productName, price: productPrice });
+    res.redirect('/cart');
+});
+
+// Route to display the cart page
+app.get('/cart', (req, res) => {
+    res.render('cart', { cartItems });
 });
 
 app.listen(3000, () => {

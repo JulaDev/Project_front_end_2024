@@ -21,47 +21,7 @@
 
 <body>
     <!-- 1. Navigation Bar -->
-    <nav class="navbar navbar-expand-lg bg-body-light ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Season Green</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ">
-                    <!-- Homepage -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Homepage</a>
-                    </li>
-                    <!-- All product-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">All Product</a>
-                    </li>
-                    <!-- Category -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Category
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
-                            <li><a class="dropdown-item" href="#">Meat & Seafood</a></li>
-                            <li><a class="dropdown-item" href="#">Snack & Desserts</a></li>
-                        </ul>
-                    </li>
-                    <!-- Promotion -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Promotion</a>
-                    </li>
-                    <!-- Contact -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%- include('./nav/navbar') %>
 
     <!-- 2. Search -->
     <nav class="navbar bg-body-tertiary">
@@ -74,13 +34,11 @@
     </nav>
     <br>
 
-    
+    <!-- 3. Title -->
     <h1>List of <%= listTitle %> Items</h1>
-    
+  
 
-
-    <!-- list.ejs -->
-    <!-- list of item -->
+    <!-- 4. list of item -->
     <div class="container mt-3 grid wth">
         <% for (let i = 0; i < items.length; i++) { %>
             <!-- Check if it's the start of a new row -->
@@ -95,11 +53,11 @@
                     <div class="container mt-3 picbox"></div>
                     <!-- Item name and price -->
                     <div class="d-flex">
-                        <div class="boxline">
-                            <p><%= items[i].name %></p>
+                        <div class="">
+                            <p><%= items[i].product_name %></p>
                         </div>
-                        <div class="boxline">
-                            <p><%= items[i].price %></p>
+                        <div class="">
+                            <p><%= items[i].product_price %></p>
                             <button>add</button>
                         </div>
                     </div>
@@ -113,7 +71,7 @@
         <% } %>
     </div>
 
-    <!-- Pagination buttons -->
+    <!-- 5. Pagination buttons -->
     <div class="container mt-3">
         <% if (currentPage > 1) { %>
             <a href="/list?page=<%= currentPage - 1 %>"><button id="prevBtn">Previous</button></a>
@@ -123,74 +81,8 @@
         <% } %>
     </div>
 
-
-    
-
-    <!-- Contact -->
-    <div class="container mt-3">
-        <div class="contact-section">
-            <h2><span class="text-black">Contact</span> <span class="text-green">Us</span></h2>
-            <div class="list-group mb-4">
-                <br>
-                <a href="tel:+0957565128"
-                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    <i class="bi bi-telephone-fill"></i>
-                    <span>095-756-5128</span>
-                </a>
-                <a href="mailto:jokekajik2101@gmail.com"
-                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    <i class="bi bi-envelope-fill"></i>
-                    <span>jokekajik2101@gmail.com</span>
-                </a>
-                <a href="#"
-                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    <i class="bi bi-geo-alt-fill"></i>
-                    <span>Chiang mai, Thailand - 50190</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Contact -->
-    <div class="container mt-3">
-        <!-- Embed your Google map iframe here -->
-        <div class="map mb-4">
-            <!-- Replace with your Google Maps iframe -->
-            <iframe src="your-google-map-iframe-link-here" width="100%" height="250" style="border:0;"
-                allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
-        <div class="contact-section">
-            <h2><span class="text-black">Quick</span> <span class="text-green">Link</span></h2>
-            <ul class="links">
-                <br>
-                <li><a href="#" class="link-item"><i class="bi bi-chevron-right"></i>All Product</a></li>
-                <br>
-                <li class="category">
-                    <a href="#" class="link-item"><i class="bi bi-chevron-right"></i>Category</a>
-                    <ul class="sub-links">
-                        <li><a href="#">Fruits & Vegetables</a></li>
-                        <li><a href="#">Meat & Seafood</a></li>
-                        <li><a href="#">Snacks & Desserts</a></li>
-                    </ul>
-                </li>
-                <br>
-                <li><a href="#" class="link-item"><i class="bi bi-chevron-right"></i>Promotion</a></li>
-                <br>
-                <li><a href="#" class="link-item"><i class="bi bi-chevron-right"></i>Shopping basket</a></li>
-                <br>
-                <li><a href="#" class="link-item"><i class="bi bi-chevron-right"></i>Contact</a></li>
-                <br>
-            </ul>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; Grocery shop</p>
-    </footer>
+    <!-- 6. footer -->
+    <%- include('./nav/footer') %>
 
 </body>
 
