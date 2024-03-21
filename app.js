@@ -28,8 +28,8 @@ app.get('/denied', (req, res)=>{
 })
 
 app.get('/centreLogin', (req, res)=>{
-        history.pushState(null, null, location.href);
-        history.go(1)
+        // history.pushState(null, null, location.href);
+        // history.go(1)
         res.render('./login.ejs');
 })
 
