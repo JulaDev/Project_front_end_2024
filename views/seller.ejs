@@ -45,36 +45,26 @@
     </form>
 </nav>
 
-<div class="hideNavText2 showHiddenBar">
+<div class="hideNavText2 showHiddenBar mrgBTT">
     <a class=" showHiddenBar" href="/centreHome">CONTROL CENTER</a>
 </div>
 
 <div class="row" style="position: relative; left: 12px">
     <div class="row " style="height: 80vh;">
 
+        <div class="hiddenText marketSideBar col-xl-3 col-md-4 col-12">
 
-        <div class="marketSideBar col-xl-3 col-md-4 col-12">
-
-            <div class=" sidePst" style="text-align: center">
+            <div class="sidePst" style="text-align: center">
                 <form>
 
-                    <button type="submit" class="hiddenText market-cat market categoryBtn" name="select" value="ALL" >
+                    <button style="text-align: left; padding-left: 5vw" type="submit" class="hiddenText market-cat market categoryBtn" name="select" value="ALL" >
                         SELLER LIST
                     </button>
 
                 </form>
 
-                <% for(let i = 0 ; i < 2; i ++){ %>
-
-
-                    <form action="/arrange" method="post">
-                        <button type="submit" class="categoryListPst category_box-lg category_box" style="text-transform: uppercase;" name="select" value="" >
-
-                        </button>
-                    </form>
-
-
-                <% } %>
+                <p class="hiddenText sellerTxt">BEST SELLER</p>
+                <p class="hiddenText sellerTxt">SELLER</p>
 
             </div>
 
