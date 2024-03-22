@@ -3,10 +3,10 @@ FRONTEND_SE-953262 Term Project
 ---
 ## UPDATE : 2024.03.15
 
-### MEMBER (Please fill your name)
+### MEMBER (FIXED)
     642115501 Changseong Lee [COMMIT: Pipe-lines]
-    Member2
-    Member3
+    642115050 Areeya Lexsananan
+    642115009 Julaluck Yeta
 
 
 `
