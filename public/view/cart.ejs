@@ -28,34 +28,49 @@
     <div class="container mt-3">
         <h1>Shopping Cart</h1>
         <% if (cartItems.length > 0) { %>
-            <% cartItems.forEach(item => { %>
+            <% cartItems.forEach((item, index) => { %>
                 <!-- Cart Item Box -->
-                <div class="cart-item-box ">
-                    <div class="row">
+                <div class="cart-item-box row">
+                    <!-- Product info -->
+                    <div class="row border col-md-9">
                         <!-- Left side: Name and Price -->
                         <div class="col-md-6">
-                            <div class="container mt-3 boxline">
+                            <div class="container mt-3 ">
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <p><%= item.name %></p>
-                                        <p>Price: $<%= item.price %></p>
+                                        <p>$<%= item.price %></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Middle: Quantity -->
                         <div class="col-md-3">
-                            <div class="container mt-3 boxline">
-                                <div class="d-flex align-items-center">
+                            <div class="container mt-3">
+                                <div class="d-flex">
                                     <div>
-                                        <p>Quantity: <%= item.quantity %></p>
+                                        <p>Amount: <span id="quantity_<%= item.id %>"><%= item.quantity %></span></p>
                                     </div>
                                 </div>
+                                <!-- <div class="d-flex">
+                                    <div class="col-md-6">
+                                        <form action="/decrease" method="post">
+                                            <input type="hidden" name="productId" value="<%= product.product_id %>">
+                                            <button type="submit" class="btn btn-primary">-</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form action="/decrease" method="post">
+                                            <input type="hidden" name="productId" value="<%= product.product_id %>">
+                                            <button type="submit" class="btn btn-primary">-</button>
+                                        </form>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Right side: Total Price -->
                         <div class="col-md-3">
-                            <div class="container mt-3 boxline">
+                            <div class="container mt-3 ">
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <p>Total Price: $<%= item.quantity * item.price %></p>
@@ -65,7 +80,7 @@
                         </div>
                     </div>
                     <!-- Remove button -->
-                    <div class="container mt-3">
+                    <div class="container mt-3 col-md-3">
                         <form action="/removeFromCart" method="POST">
                             <input type="hidden" name="productId" value="<%= item.id %>">
                             <button type="submit" class="btn btn-danger">Remove</button>
@@ -105,6 +120,22 @@
         <% }); %>
         <% return total.toFixed(2); %>
     <% } %>
+
+    <script>
+        function updateQuantity(index, change) {
+            // Get the current quantity
+            let quantityElement = document.getElementById('quantity' + index);
+            let currentQuantity = parseInt(quantityElement.textContent);
+
+            // Update the quantity based on the change
+            let newQuantity = currentQuantity + change;
+
+            // Ensure the new quantity is not negative
+            if (newQuantity >= 0) {
+                quantityElement.textContent = newQuantity;
+            }
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="footer">

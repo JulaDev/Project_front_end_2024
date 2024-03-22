@@ -147,6 +147,23 @@ app.post('/removeFromCart', (req, res) => {
     res.redirect('/cart'); // Redirect back to the cart page
 });
 
+// Handle click event for increasing quantity
+app.post('/increase', (req, res) => {
+    const { productId} = req.body;
+    const existingItemIndex = cartItems.findIndex(item => item.id === productId);
+    cartItems[existingItemIndex].quantity += 1;
+    res.redirect('/cart');
+});
+
+// Handle click event for decreasing quantity
+app.post('/decrease', (req, res) => {
+    const { productId} = req.body;
+    const existingItemIndex = cartItems.findIndex(item => item.id === productId);
+    cartItems[existingItemIndex].quantity -= 1;
+    res.redirect('/cart');
+});
+
+
 // Route to display the cart page
 app.get('/cart', (req, res) => {
     res.render('cart', { cartItems });
