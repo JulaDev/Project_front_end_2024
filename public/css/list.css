@@ -284,7 +284,7 @@ footer {
     gap: 5px 5px;
 }
 
-.w-100{
+.w100{
     width: 100%;
     /* background-color: #007bff; */
 }
@@ -359,4 +359,12 @@ html, body {
     width: 30rem;
     height: 30rem;
     /* border: #007bff solid; */
+}
+
+.border{
+    border: #007bff solid;
+}
+
+.w80{
+    width: 80%;
 }

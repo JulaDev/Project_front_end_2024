@@ -2,8 +2,8 @@
 let token ={
     host: "localhost",
     user: "root",
-    password: "password",
-    database: "userDB"
+    password: "373600",
+    database: "userdb"
 }
 
 module.exports = token

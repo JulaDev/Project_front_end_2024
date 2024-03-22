@@ -127,10 +127,18 @@ let cartItems = [];
 // Route to add an item to the cart
 app.post('/addToCart', (req, res) => {
     const { productId, productName, productPrice } = req.body;
-    // Add the item to the cart
-    cartItems.push({ id: productId, name: productName, price: productPrice });
+    // Check if the item with the same ID already exists in the cart
+    const existingItemIndex = cartItems.findIndex(item => item.id === productId);
+    if (existingItemIndex !== -1) {
+        // If the item exists, increment its quantity
+        cartItems[existingItemIndex].quantity += 1;
+    } else {
+        // If the item doesn't exist, add it to the cart with quantity 1
+        cartItems.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+    }
     res.redirect('/cart');
 });
+
 
 app.post('/removeFromCart', (req, res) => {
     const { productId } = req.body;
