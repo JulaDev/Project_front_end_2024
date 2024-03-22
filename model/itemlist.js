@@ -1,6 +1,6 @@
 // itemlist.js
 const BaseSQLModel = require("./baseSQLModel");
-const pool = require("../db");
+const connection = require("../db");
 
 class ItemListModel extends BaseSQLModel {
     constructor() {
@@ -22,9 +22,10 @@ class ItemListModel extends BaseSQLModel {
         }
     }
 
+    // async setProductItems(){}
     async setProductItems() {
         try {
-            await this.deleteAll();
+            // await this.deleteAll();
             const item_list = [
                 { 
                     date: "2024-03-16",
@@ -429,7 +430,7 @@ class ItemListModel extends BaseSQLModel {
         }
     }
 
-    // itemlist.js
+    
     async getProductItems(startIndex, endIndex) {
         try {
             const query = `SELECT * FROM ${this.tableName} LIMIT ?, ?`;
@@ -456,7 +457,7 @@ class ItemListModel extends BaseSQLModel {
 
     async countAll() {
         try {
-            const [rows] = await pool.query(`SELECT COUNT(*) AS total FROM ${this.tableName}`);
+            const [rows] = await connection.query(`SELECT COUNT(*) AS total FROM ${this.tableName}`);
             console.log(`Rows: ${JSON.stringify(rows)}`);
             return rows[0].total;
         } catch (error) {

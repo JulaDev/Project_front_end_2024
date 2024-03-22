@@ -115,7 +115,7 @@ body {
 
 .card {
     flex: 0 0 auto; /* Prevent cards from shrinking and enable scrolling */
-    width: 18rem; /* Set a fixed width for each card */
+    width: 15rem; /* Set a fixed width for each card */
     margin-right: 30px; /* Add some space between the cards */
 }
 
@@ -284,7 +284,7 @@ footer {
     gap: 5px 5px;
 }
 
-.wth{
+.w-100{
     width: 100%;
     /* background-color: #007bff; */
 }
@@ -301,4 +301,14 @@ footer {
     max-width: 33.333333%;
     padding-right: 15px;
     padding-left: 15px;
+}
+
+.r-pos{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.grid .col-md-2 {
+    flex: 0 0 20%; /* Set width for 5 items per row */
+    max-width: 20%; /* Set maximum width */
 }
