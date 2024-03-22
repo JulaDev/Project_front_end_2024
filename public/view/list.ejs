@@ -61,7 +61,9 @@
                             </div>
                             <div class="r-pos">
                                 <p><%= items[i].product_price %></p>
-                                <button class="btn btn-primary">add</button>
+                                <a href="/product/<%= items[i].product_id %>">
+                                    <button>Add</button>
+                                </a>
                             </div>
                         </div>
                     </div>

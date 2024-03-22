@@ -1,3 +1,4 @@
+<!-- productpage.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,36 +23,20 @@
 <body>
     <%- include('./nav/navbar') %>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Item Image -->
-                <img src="<%= item.product_image %>" alt="Product Image">
-            </div>
-            <div class="col-md-6">
-                <!-- Item Details -->
-                <h2><%= item.product_name %></h2>
-                <p>Price: $<%= item.product_price %></p>
-                <!-- Add to Cart Button -->
-                <form action="/addToCart" method="POST">
-                    <input type="hidden" name="productId" value="<%= item.product_id %>">
-                    <form action="/addToCart" method="POST">
-                        <input type="hidden" name="productId" value="<%= item.product_id %>">
-                        <input type="hidden" name="productName" value="<%= item.product_name %>">
-                        <input type="hidden" name="productPrice" value="<%= item.product_price %>">
-                        <button type="submit">Add to Cart</button>
-                    </form>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Item Description -->
-                <h3>Item Description</h3>
-                <p><%= item.product_description %></p>
-            </div>
-        </div>
+    <div class="container mt-3">
+        <h1><%= product.product_name %></h1>
+        <p><%= product.product_price %></p>
+        <img src="../img/product/<%= product.product_image %>" alt="<%= product.product_name %>">
+        <p><%= product.product_description %></p>
     </div>
+
+    <!-- Button to add product to cart -->
+    <form action="/addToCart" method="post">
+        <input type="hidden" name="productId" value="<%= product.product_id %>">
+        <input type="hidden" name="productName" value="<%= product.product_name %>">
+        <input type="hidden" name="productPrice" value="<%= product.product_price %>">
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
 
     <footer>
         <p>&copy; Grocery shop</p>

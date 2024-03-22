@@ -110,23 +110,16 @@ app.get('/promotion', async function(req, res) {
     }
 });
 
-app.get('/product/:itemId', async function(req, res) {
+app.get('/product/:productId', async (req, res) => {
     try {
-        const itemId = req.params.itemId;
-        // Retrieve the item details based on the itemId
-        const item = await itemlist.getItemById(itemId); // Define this function in your itemlist module
-        if (item) {
-            res.render('productpage', { item: item });
-        } else {
-            // Handle case where item with the specified ID is not found
-            res.status(404).send("Item not found");
-        }
+        const productId = req.params.productId;
+        const product = await itemlist.findProductById(productId);
+        res.render('productpage', { product });
     } catch(error) {
-        console.error("Error fetching item details:", error);
+        console.error("Error fetching product details:", error);
         res.status(500).send("Internal Server Error");
     }
 });
-
 
 // Define a global variable to store cart items
 let cartItems = [];

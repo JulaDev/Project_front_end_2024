@@ -466,6 +466,21 @@ class ItemListModel extends BaseSQLModel {
         }
     }
 
+    async findProductById(productId) {
+        try {
+            const query = `SELECT * FROM ${this.tableName} WHERE product_id = ?`;
+            const [rows] = await connection.query(query, [productId]);
+            if (rows.length > 0) {
+                return rows[0]; // Return the first product found
+            } else {
+                throw new Error("Product not found");
+            }
+        } catch (error) {
+            console.error("Error fetching product by ID:", error);
+            throw error;
+        }
+    }
+
 }
 
 const itemList = new ItemListModel();
