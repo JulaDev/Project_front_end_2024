@@ -141,19 +141,23 @@
 
     }
 
+    .sidePst{
+        position: relative;
+        top: -37px
+    }
+
 
     .category_box{
         margin-left: 0.1px;
         width: 100%;
-        height: 50px;
-        margin-bottom: 10px;
+        height: 100%;
+        /*margin-bottom: 10px;*/
         text-align: center;
-        background-color: white;
+        background-color: transparent;
         border: none;
         font-size: 1.5rem;
         color: white;
         font-weight: lighter;
-        padding-top: 1px;
     }
     .category_box:hover{
         background-color: #9ec788;
@@ -174,6 +178,7 @@
         font-size: 1.6rem;
     }
 
+
     .showHiddenBar{
         display: block;
         color: #0f5132;
@@ -186,6 +191,10 @@
         text-decoration-line: none;
 
 
+    }
+
+    .mrgBTT{
+        margin-bottom: 4vh;
     }
 
 

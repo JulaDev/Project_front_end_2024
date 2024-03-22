@@ -85,5 +85,5 @@ connection.query('SELECT 1 + 1 AS solution',(error, results, fields)=>{
 
 
 
-const pool = mysql.createPool(token);
-module.exports = pool.promise(); 
+// const pool = mysql.createPool(token);
+// module.exports = pool.promise();

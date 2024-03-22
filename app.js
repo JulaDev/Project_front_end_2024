@@ -19,7 +19,6 @@ let loginSTATUS = false;
 
 let loginUID = 0;
 
-
 app.set('view engine', 'ejs');
 
 // GET UNDER =======================================
@@ -29,6 +28,8 @@ app.get('/denied', (req, res)=>{
 })
 
 app.get('/centreLogin', (req, res)=>{
+        // history.pushState(null, null, location.href);
+        // history.go(1)
         res.render('./login.ejs');
 })
 
@@ -41,7 +42,7 @@ app.get('/centreHome', (req, res)=>{
 })
 
 app.get('/market',(req, res)=>{
-    if(loginSTATUS === true){
+    if(loginSTATUS){
         db.query((`SELECT * FROM product`), (err, row)=>{
             if(err) throw err;
             db.query(`SELECT * FROM category`,(err, categories)=>{
@@ -54,7 +55,7 @@ app.get('/market',(req, res)=>{
     }
 })
 app.get('/history',(req, res)=>{
-    if(loginSTATUS === true){
+    if(loginSTATUS){
         res.render('history',{CPdate: date});
     }else{
         res.redirect('/denied')
@@ -176,6 +177,7 @@ app.post('/logOut',(req, res)=>{
     loginSTATUS = false;
     console.log("LOGIN STATUS: "+ loginSTATUS)
     res.redirect('/centreLogin')
+
 })
 
 
@@ -440,6 +442,16 @@ app.post('/historyDetail',(req, res)=>{
     }else{
         res.redirect('/denied')
     }
+})
+
+app.post('/seller', (req,res)=>{
+    let sqlInOrder = `SELECT * FROM product ORDER BY product_sales_count DESC`
+
+    db.query(sqlInOrder, (err, row)=>{
+        res.render('seller', {list : row})
+        console.log(`product id: ${row[0].product_id}`)
+        console.log(`product id: ${row[0].product_name}`)
+    })
 })
 
 

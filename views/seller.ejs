@@ -45,36 +45,26 @@
     </form>
 </nav>
 
-<div class="hideNavText2 showHiddenBar">
+<div class="hideNavText2 showHiddenBar mrgBTT">
     <a class=" showHiddenBar" href="/centreHome">CONTROL CENTER</a>
 </div>
 
 <div class="row" style="position: relative; left: 12px">
     <div class="row " style="height: 80vh;">
 
+        <div class="hiddenText marketSideBar col-xl-3 col-md-4 col-12">
 
-        <div class="marketSideBar col-xl-3 col-md-4 col-12">
-
-            <div class=" sidePst" style="text-align: center">
+            <div class="sidePst" style="text-align: center">
                 <form>
 
-                    <button type="submit" class="hiddenText market-cat market categoryBtn" name="select" value="ALL" >
+                    <button style="text-align: left; padding-left: 5vw" type="submit" class="hiddenText market-cat market categoryBtn" name="select" value="ALL" >
                         SELLER LIST
                     </button>
 
                 </form>
 
-                <% for(let i = 0 ; i < 2; i ++){ %>
-
-
-                    <form action="/arrange" method="post">
-                        <button type="submit" class="categoryListPst category_box-lg category_box" style="text-transform: uppercase;" name="select" value="" >
-
-                        </button>
-                    </form>
-
-
-                <% } %>
+                <p class="hiddenText sellerTxt">BEST SELLER</p>
+                <p class="hiddenText sellerTxt">SELLER</p>
 
             </div>
 
@@ -87,14 +77,14 @@
             <div class="list-nav tp-margin mrg-l" >
 
                 <div style="display: flex">
-                    <p class="hideAddItemBTN col-lg-10 col-md-9 col-sm-8 col-8" style="font-size: 2rem; font-weight: bold">SELLER</p>
+                    <p class="hideAddItemBTN col-lg-10 col-md-9 col-sm-8 col-8" style="font-size: 2rem; font-weight: bold">BEST SELLER</p>
 
 
                 </div>
 
                 <div style="height: 70vh;  overflow: scroll">
 
-                    <% for(let i = 0 ; i < 30; i ++){ %>
+                    <% for(let i = 0 ; i < list.length; i ++){ %>
 
                         <div class=" row outline list-box-lg list-box-md list-box-sm" style="height: 60px; padding-top: 15px; border-color: gray">
 
@@ -109,16 +99,17 @@
 
                             </div>
 
-                            <p class="col-lg-2 col-md-1 col-sm-1 col-1" style="text-align: left; padding-left: 12px">ID: </p>
+                            <p class="col-lg-2 col-md-1 col-sm-1 col-1" style="text-align: left; padding-left: 12px">ID: <%= list[i].product_id%></p>
 
                             <div class="col-lg-9 col-md-8 col-sm-9 col-9" style="display: flex" >
-                                <div style="text-align: left; width: 50%; padding-left: 10vw">SELLER NAME </div>
-                                <div  style="text-align: right; width: 50%">DATE</div>
+                                <div style="text-align: left; width: 50%; padding-left: 10vw"><%= list[i].product_sales_count%> :: <%= list[i].product_name%></div>
+                                <div  style="text-align: right; width: 50%"> <%= list[i].date%></div>
                             </div>
 
 
                         </div>
-
+                        <% if(i === 9) {%>
+                                <% break}%>
                     <% } %>
                 </div>
             </div>
