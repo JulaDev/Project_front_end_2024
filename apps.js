@@ -132,6 +132,13 @@ app.post('/addToCart', (req, res) => {
     res.redirect('/cart');
 });
 
+app.post('/removeFromCart', (req, res) => {
+    const { productId } = req.body;
+    // Remove the item from the cartItems array based on the productId
+    cartItems = cartItems.filter(item => item.id !== productId);
+    res.redirect('/cart'); // Redirect back to the cart page
+});
+
 // Route to display the cart page
 app.get('/cart', (req, res) => {
     res.render('cart', { cartItems });
