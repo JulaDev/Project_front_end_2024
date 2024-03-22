@@ -16,27 +16,34 @@
 
 
     <!-- custom CSS -->
-    <link rel="stylesheet" href="../css/homepage.css" />
+    <link rel="stylesheet" href="../css/list.css" />
 
 </head>
 
 <body>
     <%- include('./nav/navbar') %>
 
+    <br><br><br>
     <div class="container mt-3">
-        <h1><%= product.product_name %></h1>
-        <p><%= product.product_price %></p>
-        <img src="../img/product/<%= product.product_image %>" alt="<%= product.product_name %>">
-        <p><%= product.product_description %></p>
+        <div class="product-container">
+            <div class="fixBox product-image">
+                <img src="../img/product/<%= product.product_image %>" alt="<%= product.product_name %>"
+                    class="img-top">
+            </div>
+            <div class="product-details">
+                <h1><%= product.product_name %></h1>
+                <p><%= product.product_price %></p>
+                <form action="/addToCart" method="post">
+                    <input type="hidden" name="productId" value="<%= product.product_id %>">
+                    <input type="hidden" name="productName" value="<%= product.product_name %>">
+                    <input type="hidden" name="productPrice" value="<%= product.product_price %>">
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+                <p><%= product.product_description %></p>
+            </div>
+        </div>
     </div>
-
-    <!-- Button to add product to cart -->
-    <form action="/addToCart" method="post">
-        <input type="hidden" name="productId" value="<%= product.product_id %>">
-        <input type="hidden" name="productName" value="<%= product.product_name %>">
-        <input type="hidden" name="productPrice" value="<%= product.product_price %>">
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
-    </form>
+    <br><br><br><br>
 
     <footer>
         <p>&copy; Grocery shop</p>
