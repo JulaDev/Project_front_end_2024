@@ -1,3 +1,4 @@
+//db.js
 let token = require("./token");
 const mysql = require('mysql2');
 
@@ -80,9 +81,9 @@ connection.query('SELECT 1 + 1 AS solution',(error, results, fields)=>{
 })
 
 
-module.exports = connection;
+// module.exports = connection;
 
 
 
-// const pool = mysql.createPool(token);
-// module.exports = pool.promise();
+const pool = mysql.createPool(token);
+module.exports = pool.promise();

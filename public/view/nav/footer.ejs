@@ -29,8 +29,19 @@
         <!-- Embed your Google map iframe here -->
         <div class="map mb-4">
             <!-- Replace with your Google Maps iframe -->
-            <iframe src="your-google-map-iframe-link-here" width="100%" height="250" style="border:0;"
-                allowfullscreen="" loading="lazy"></iframe>
+            <div class="map mb-4">
+                <!-- Replace with your Google Maps iframe -->
+                <div id="map"></div>
+                <script>
+                    maptilersdk.config.apiKey = 'fMdGh78DJuTN0QdUsnBy';
+                    const map = new maptilersdk.Map({
+                        container: 'map', // container's id or the HTML element to render the map
+                        style: maptilersdk.MapStyle.STREETS,
+                        center: [16.62662018, 49.2125578], // starting position [lng, lat]
+                        zoom: 14, // starting zoom
+                    });
+                </script>
+            </div>
         </div>
 
         <div class="contact-section">

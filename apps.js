@@ -110,23 +110,16 @@ app.get('/promotion', async function(req, res) {
     }
 });
 
-app.get('/product/:itemId', async function(req, res) {
+app.get('/product/:productId', async (req, res) => {
     try {
-        const itemId = req.params.itemId;
-        // Retrieve the item details based on the itemId
-        const item = await itemlist.getItemById(itemId); // Define this function in your itemlist module
-        if (item) {
-            res.render('productpage', { item: item });
-        } else {
-            // Handle case where item with the specified ID is not found
-            res.status(404).send("Item not found");
-        }
+        const productId = req.params.productId;
+        const product = await itemlist.findProductById(productId);
+        res.render('productpage', { product });
     } catch(error) {
-        console.error("Error fetching item details:", error);
+        console.error("Error fetching product details:", error);
         res.status(500).send("Internal Server Error");
     }
 });
-
 
 // Define a global variable to store cart items
 let cartItems = [];
@@ -134,9 +127,24 @@ let cartItems = [];
 // Route to add an item to the cart
 app.post('/addToCart', (req, res) => {
     const { productId, productName, productPrice } = req.body;
-    // Add the item to the cart
-    cartItems.push({ id: productId, name: productName, price: productPrice });
+    // Check if the item with the same ID already exists in the cart
+    const existingItemIndex = cartItems.findIndex(item => item.id === productId);
+    if (existingItemIndex !== -1) {
+        // If the item exists, increment its quantity
+        cartItems[existingItemIndex].quantity += 1;
+    } else {
+        // If the item doesn't exist, add it to the cart with quantity 1
+        cartItems.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+    }
     res.redirect('/cart');
+});
+
+
+app.post('/removeFromCart', (req, res) => {
+    const { productId } = req.body;
+    // Remove the item from the cartItems array based on the productId
+    cartItems = cartItems.filter(item => item.id !== productId);
+    res.redirect('/cart'); // Redirect back to the cart page
 });
 
 // Route to display the cart page

@@ -1,3 +1,4 @@
+<!-- listByCategory.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,12 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.min.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css" rel="stylesheet" />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { top: 0; bottom: 0; width: 100%; }
+    </style>
 
 
     <!-- custom CSS -->
@@ -35,50 +42,47 @@
     <br>
 
     <!-- 3. Title -->
-    <h1>List of <%= listTitle %> Items</h1>
+    <div class="container mt-3 grid wth">
+        <h1>List of <%= listTitle %> Items</h1>
+    </div>
     
     <!-- 4. List of item -->
-    <div class="container mt-3">
-        <% items.forEach(function(item, index) { %>
-            <% if (index % 3 === 0) { %>
-                <!-- Start a new row -->
+    <div class="container mt-3 grid wth">
+        <% for (let i = 0; i < items.length; i++) { %>
+            <!-- Check if it's the start of a new row -->
+            <% if (i % 5 === 0) { %>
                 <div class="row">
             <% } %>
-
-            <!-- product box -->
-            <div class="col-md-4">
-                <div class="container mt-3 boxline">
-                    <!-- picture -->
-                    <div class="container mt-3 picbox"></div>
-                    <div class="d-flex">
-                        <div class="">
-                            <p><%= item.product_name %></p>
-                        </div>
-                        <div class="">
-                            <p><%= item.product_price %></p>
-
-                            <!-- link to productpage.ejs -->
-                            <!-- <a href="/product/<%= item.id %>">
-                                <button>Add</button>
-                            </a> -->
-
-                            <form action="/addToCart" method="POST">
-                                <input type="hidden" name="productId" value="<%= item.product_id %>">
-                                <input type="hidden" name="productName" value="<%= item.product_name %>">
-                                <input type="hidden" name="productPrice" value="<%= item.product_price %>">
-                                <button type="submit">Add</button>
-                            </form>
+    
+            <!-- Product box -->
+            <div class="col-md-2"> <!-- Adjust column width for 5 items per row -->
+                <div class="container mt-3 pt-2 card">
+                    <!-- Picture -->
+                    <img src="../img/product/<%= items[i].product_image %>" class="card-img-top" alt="Promotion Item 1">
+                    <!-- Item name and price -->
+                    <div class="mt-5 mb-2 pl-3 pr-3">
+                        <div class="d-flex">
+                            <div class="">
+                                <p><%= items[i].product_name %></p>
+                            </div>
+                            <div class="r-pos">
+                                <p><%= items[i].product_price %></p>
+                                <!-- link to productpage.ejs -->
+                                <a href="/product/<%= items[i].product_id %>">
+                                    <button>Add</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
                 </div>
             </div>
-
-            <% if ((index + 1) % 3 === 0 || (index + 1) === items.length) { %>
-                <!-- End the row -->
-                </div>
+    
+            <!-- Check if it's the end of a row or the last item -->
+            <% if ((i + 1) % 5 === 0 || (i + 1) === items.length) { %>
+                </div> <!-- Close the row -->
             <% } %>
-        <% }); %>
+        <% } %>
     </div>
 
     <!-- 5. Footer -->

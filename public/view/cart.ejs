@@ -1,64 +1,118 @@
-<!-- homepage.ejs -->
+<!-- cart.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Shopping Cart</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
 
 
-    <!-- custom CSS -->
-    <link rel="stylesheet" href="../css/homepage.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/list.css" />
 </head>
 
 <body>
-    <!-- 1. Navbar -->
+    <!-- Navbar -->
     <%- include('./nav/navbar') %>
 
-    <h1>Shopping Cart</h1>
+
     <div class="container mt-3">
+        <h1>Shopping Cart</h1>
         <% if (cartItems.length > 0) { %>
             <% cartItems.forEach(item => { %>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="container mt-3 boxline">
-                            <div class="d-flex">
-                                <div>
-                                    <p><%= item.name %></p>
+                <!-- Cart Item Box -->
+                <div class="cart-item-box ">
+                    <div class="row">
+                        <!-- Left side: Name and Price -->
+                        <div class="col-md-6">
+                            <div class="container mt-3 boxline">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p><%= item.name %></p>
+                                        <p>Price: $<%= item.price %></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>$<%= item.price %></p>
-                                    <!-- Button to remove item from cart -->
-                                    <form action="/removeFromCart" method="POST">
-                                        <input type="hidden" name="productId" value="<%= item.id %>">
-                                        <button type="submit">Remove</button>
-                                    </form>
+                            </div>
+                        </div>
+                        <!-- Middle: Quantity -->
+                        <div class="col-md-3">
+                            <div class="container mt-3 boxline">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p>Quantity: <%= item.quantity %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right side: Total Price -->
+                        <div class="col-md-3">
+                            <div class="container mt-3 boxline">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p>Total Price: $<%= item.quantity * item.price %></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Remove button -->
+                    <div class="container mt-3">
+                        <form action="/removeFromCart" method="POST">
+                            <input type="hidden" name="productId" value="<%= item.id %>">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
                 </div>
             <% }) %>
+            <!-- Summary and Purchase button -->
+            <div class="cart-summary">
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>Total:</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>$<%= calculateTotal(cartItems) %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/purchase" method="POST">
+                                <button type="submit" class="btn btn-primary">Purchase</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% } else { %>
             <p>Your cart is empty.</p>
         <% } %>
     </div>
-    
 
-    <footer>
-        <p>&copy; Grocery shop</p>
+    <% function calculateTotal(cartItems) { %>
+        <% let total = 0; %>
+        <% cartItems.forEach(item => { %>
+            <% total += parseFloat(item.quantity * item.price); %>
+        <% }); %>
+        <% return total.toFixed(2); %>
+    <% } %>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Grocery shop</p>
+        </div>
     </footer>
 
 </body>
 
 </html>
-

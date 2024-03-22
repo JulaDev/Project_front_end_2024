@@ -68,7 +68,7 @@ body {
 /* Styles for category images */
 .category-image {
     width: 100%; /* ensures image is responsive */
-    height: auto; /* maintain aspect ratio */
+    height: 100%; /* maintain aspect ratio */
     border-radius: 5px; /* optional: if you want rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* optional: if you want shadow for depth */
 }
@@ -115,7 +115,7 @@ body {
 
 .card {
     flex: 0 0 auto; /* Prevent cards from shrinking and enable scrolling */
-    width: 18rem; /* Set a fixed width for each card */
+    width: 15rem; /* Set a fixed width for each card */
     margin-right: 30px; /* Add some space between the cards */
 }
 
@@ -284,7 +284,7 @@ footer {
     gap: 5px 5px;
 }
 
-.wth{
+.w100{
     width: 100%;
     /* background-color: #007bff; */
 }
@@ -301,4 +301,70 @@ footer {
     max-width: 33.333333%;
     padding-right: 15px;
     padding-left: 15px;
+}
+
+.r-pos{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.grid .col-md-2 {
+    flex: 0 0 20%; /* Set width for 5 items per row */
+    max-width: 20%; /* Set maximum width */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.product-image {
+    flex: 1;
+}
+
+.product-details {
+    flex: 1;
+    max-width: 400px; /* Adjust max-width as needed */
+}
+
+.product-details h1 {
+    margin-top: 0;
+}
+
+.product-details p {
+    margin-bottom: 0;
+}
+
+.product-details button {
+    margin-top: 10px;
+}
+
+.img-top {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fixBox{
+    width: 30rem;
+    height: 30rem;
+    /* border: #007bff solid; */
+}
+
+.border{
+    border: #007bff solid;
+}
+
+.w80{
+    width: 80%;
 }
