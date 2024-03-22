@@ -84,5 +84,5 @@ module.exports = connection;
 
 
 
-const pool = mysql.createPool(token);
-module.exports = pool.promise(); 
+// const pool = mysql.createPool(token);
+// module.exports = pool.promise();

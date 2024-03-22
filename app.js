@@ -444,6 +444,16 @@ app.post('/historyDetail',(req, res)=>{
     }
 })
 
+app.post('/seller', (req,res)=>{
+    let sqlInOrder = `SELECT * FROM product ORDER BY product_sales_count DESC`
+
+    db.query(sqlInOrder, (err, row)=>{
+        res.render('seller', {list : row})
+        console.log(`product id: ${row[0].product_id}`)
+        console.log(`product id: ${row[0].product_name}`)
+    })
+})
+
 
 app.listen(port, ()=>{
     console.log("BackEnd Server is listening to PORT: "+port);
