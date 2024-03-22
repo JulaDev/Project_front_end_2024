@@ -22,7 +22,7 @@ let createItemTable = `CREATE TABLE IF NOT EXISTS product(
     product_description varchar(600) not null,
     product_sales_count int,
     product_price decimal(15,2) not null,
-    product_image varchar(400),
+    product_image varchar(10000),
     product_price_promotion varchar(50)
     );`
 
